@@ -4,8 +4,7 @@
 const API_KEY =
   "b90e5cc4bef5c9ad1aaadf78fb5c9af9098896ed0b247b8565952c9a20e57d85";
 // при конструировании строки запроса лечше использовать URLSearchParams, а не собирать ее из кусочков, как ниже
-export const loadTicker = tickerName => {
+export const loadTicker = tickerName =>
   fetch(
     `https://min-api.cryptocompare.com/data/price?fsym=${tickerName}&tsyms=USD&api_key=${API_KEY}`
   ).then(r => r.json());
-};

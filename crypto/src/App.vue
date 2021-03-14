@@ -220,7 +220,7 @@
 </template>
 
 <script>
-// import { loadTicker } from "./api.js";
+import { loadTicker } from "./api";
 
 export default {
   name: "App",
@@ -354,37 +354,37 @@ export default {
     },
 
     // метод, обновляющий тикеры за счет запроса к АПИ по имени тикера
-    // subscribeToUpdates(tickerName) {
-    //   setInterval(async () => {
-    //     const exchangeData = await loadTicker(tickerName);
-    //     this.tickers.find(t => t.name === tickerName).price =
-    //       exchangeData.USD > 1
-    //         ? exchangeData.USD.toFixed(2)
-    //         : exchangeData.USD.toPrecision(2);
-    //     if (this.selectedTicker?.name === tickerName) {
-    //       this.graph.push(exchangeData.USD);
-    //     }
-    //   }, 3000);
-    //   this.ticker = "";
-    // },
-
     subscribeToUpdates(tickerName) {
       setInterval(async () => {
-        const f = await fetch(
-          `https://min-api.cryptocompare.com/data/price?fsym=${tickerName}&tsyms=USD&api_key=ce3fd966e7a1d10d65f907b20bf000552158fd3ed1bd614110baa0ac6cb57a7e`
-        );
-        const data = await f.json();
-
-        // currentTicker.price =  data.USD > 1 ? data.USD.toFixed(2) : data.USD.toPrecision(2);
+        const exchangeData = await loadTicker(tickerName);
         this.tickers.find(t => t.name === tickerName).price =
-          data.USD > 1 ? data.USD.toFixed(2) : data.USD.toPrecision(2);
-
+          exchangeData.USD > 1
+            ? exchangeData.USD.toFixed(2)
+            : exchangeData.USD.toPrecision(2);
         if (this.selectedTicker?.name === tickerName) {
-          this.graph.push(data.USD);
+          this.graph.push(exchangeData.USD);
         }
-      }, 5000);
+      }, 3000);
       this.ticker = "";
     },
+
+    // subscribeToUpdates(tickerName) {
+    //   setInterval(async () => {
+    //     const f = await fetch(
+    //       `https://min-api.cryptocompare.com/data/price?fsym=${tickerName}&tsyms=USD&api_key=ce3fd966e7a1d10d65f907b20bf000552158fd3ed1bd614110baa0ac6cb57a7e`
+    //     );
+    //     const data = await f.json();
+
+    //     // currentTicker.price =  data.USD > 1 ? data.USD.toFixed(2) : data.USD.toPrecision(2);
+    //     this.tickers.find(t => t.name === tickerName).price =
+    //       data.USD > 1 ? data.USD.toFixed(2) : data.USD.toPrecision(2);
+
+    //     if (this.selectedTicker?.name === tickerName) {
+    //       this.graph.push(data.USD);
+    //     }
+    //   }, 5000);
+    //   this.ticker = "";
+    // },
 
     // метод на кнопку Добавить тикер
     addTicker() {
