@@ -369,6 +369,8 @@ export default {
           ticker.price = "-";
           return;
         }
+
+        // данная логика не самая красивая, потому что в методах происходит и вычисление и отображение данных
         const normalizedPrice = 1 / price;
         const formattedPrice =
           normalizedPrice > 1
