@@ -132,6 +132,7 @@
           <!-- тикер -->
           <!--  запись v-bind:class="selectedTicker == t ? 'border-4' : ''"   аналогична  'border-4' : selectedTicker == t  -->
           <!-- присвоить класс border-4, если selectedTicker равно t -->
+          <!-- в formatPrice происходит форматирование цены для вывода -->
 
           <div
             v-for="(t, idx) in paginatedTickers"
@@ -145,7 +146,7 @@
                 {{ t.name }} - USD
               </dt>
               <dd class="mt-1 text-3xl font-semibold text-gray-900">
-                {{ t.price }}
+                {{ formatPrice(t.price) }}
               </dd>
             </div>
             <div class="w-full border-t border-gray-200"></div>
@@ -220,7 +221,7 @@
 </template>
 
 <script>
-import { loadTicker } from "./api";
+import { loadTickers } from "./api";
 
 export default {
   name: "App",
@@ -362,22 +363,20 @@ export default {
       if (!this.tickers.length) {
         return;
       }
-      const exchangeData = await loadTicker(this.tickers.map((t) => t.name));
+      const exchangeData = await loadTickers(this.tickers.map((t) => t.name));
       this.tickers.forEach((ticker) => {
         const price = exchangeData[this.ticker.name.toUpperCase()];
-        if (!price) {
-          ticker.price = "-";
-          return;
-        }
 
-        // данная логика не самая красивая, потому что в методах происходит и вычисление и отображение данных
-        const normalizedPrice = 1 / price;
-        const formattedPrice =
-          normalizedPrice > 1
-            ? normalizedPrice.toFixed(2)
-            : normalizedPrice.toPrecision(2);
-        ticker.price = formattedPrice;
+        // строка ниже означает price или -
+        ticker.price = price ?? "-";
       });
+    },
+    // метод форматирования цены
+    formatPrice(price) {
+      if (price === "-") {
+        return price;
+      }
+      return price > 1 ? price.toFixed(2) : price.toPrecision(2);
     },
 
     // метод на кнопку Добавить тикер
