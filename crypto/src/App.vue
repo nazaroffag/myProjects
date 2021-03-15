@@ -47,7 +47,7 @@
                 v-on:keydown="check"
                 v-on:keydown.enter="addTicker"
                 v-on:keyup="searchTicker"
-                class="block w-full pr-10 border-gray-300 text-gray-900 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm rounded-md "
+                class="block w-full pr-10 border-gray-300 text-gray-900 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm rounded-md"
                 placeholder="Например DOGE"
                 autocomplete="off"
               />
@@ -201,7 +201,7 @@
               x="0"
               y="0"
               viewBox="0 0 511.76 511.76"
-              style="enable-background:new 0 0 512 512"
+              style="enable-background: new 0 0 512 512"
               xml:space="preserve"
             >
               <g>
@@ -245,7 +245,7 @@ export default {
       // страница фильтра
       page: 1,
       // поле фильтра
-      filter: ""
+      filter: "",
     };
   },
   created() {
@@ -266,8 +266,9 @@ export default {
     const tickersData = localStorage.getItem("cryptonomicon-list");
     if (tickersData) {
       this.tickers = JSON.parse(tickersData);
-      this.tickers.forEach(ticker => this.subscribeToUpdates(ticker.name));
     }
+    // каждые 5 секунд вызываем метод для обновления тикеров
+    setInterval(this.updateTickers, 5000);
 
     // загружаем список тикеров из API Cryptocompare
     setTimeout(async () => {
@@ -294,7 +295,7 @@ export default {
 
     // метод, возвращающий список тикеров, удовлетворяющих условию в инпуте фильтра
     filteredTickers() {
-      return this.tickers.filter(ticker =>
+      return this.tickers.filter((ticker) =>
         ticker.name.includes(this.filter.toUpperCase())
       );
     },
@@ -317,7 +318,7 @@ export default {
         return this.graph.map(() => 50);
       }
       return this.graph.map(
-        price => 5 + ((price - minValue) * 95) / (maxValue - minValue)
+        (price) => 5 + ((price - minValue) * 95) / (maxValue - minValue)
       );
     },
 
@@ -325,9 +326,9 @@ export default {
     pageStateOptions() {
       return {
         filter: this.filter,
-        page: this.page
+        page: this.page,
       };
-    }
+    },
   },
 
   // здесь указывается логика, срабатывающая при выполнении действий. Нажал -> сработало
@@ -354,43 +355,34 @@ export default {
     },
 
     // метод, обновляющий тикеры за счет запроса к АПИ по имени тикера
-    subscribeToUpdates(tickerName) {
-      setInterval(async () => {
-        const exchangeData = await loadTicker(tickerName);
-        this.tickers.find(t => t.name === tickerName).price =
-          exchangeData.USD > 1
-            ? exchangeData.USD.toFixed(2)
-            : exchangeData.USD.toPrecision(2);
-        if (this.selectedTicker?.name === tickerName) {
-          this.graph.push(exchangeData.USD);
+    // массив тикеров пустой, сразу выходим
+    // иначе запрос к api.js и изменение массива тикеров с добавлением цены
+
+    async updateTickers() {
+      if (!this.tickers.length) {
+        return;
+      }
+      const exchangeData = await loadTicker(this.tickers.map((t) => t.name));
+      this.tickers.forEach((ticker) => {
+        const price = exchangeData[this.ticker.name.toUpperCase()];
+        if (!price) {
+          ticker.price = "-";
+          return;
         }
-      }, 3000);
-      this.ticker = "";
+        const normalizedPrice = 1 / price;
+        const formattedPrice =
+          normalizedPrice > 1
+            ? normalizedPrice.toFixed(2)
+            : normalizedPrice.toPrecision(2);
+        ticker.price = formattedPrice;
+      });
     },
-
-    // subscribeToUpdates(tickerName) {
-    //   setInterval(async () => {
-    //     const f = await fetch(
-    //       `https://min-api.cryptocompare.com/data/price?fsym=${tickerName}&tsyms=USD&api_key=ce3fd966e7a1d10d65f907b20bf000552158fd3ed1bd614110baa0ac6cb57a7e`
-    //     );
-    //     const data = await f.json();
-
-    //     // currentTicker.price =  data.USD > 1 ? data.USD.toFixed(2) : data.USD.toPrecision(2);
-    //     this.tickers.find(t => t.name === tickerName).price =
-    //       data.USD > 1 ? data.USD.toFixed(2) : data.USD.toPrecision(2);
-
-    //     if (this.selectedTicker?.name === tickerName) {
-    //       this.graph.push(data.USD);
-    //     }
-    //   }, 5000);
-    //   this.ticker = "";
-    // },
 
     // метод на кнопку Добавить тикер
     addTicker() {
       const newTicker = {
         name: this.ticker.toUpperCase(),
-        price: "-"
+        price: "-",
       };
 
       // проверяем на пустой инпут
@@ -399,7 +391,7 @@ export default {
         this.tickerCheck = false;
 
         // сравниваем введенное значение с уже имеющимся в массиве
-        if (this.tickers.find(t => t.name === this.ticker.toUpperCase())) {
+        if (this.tickers.find((t) => t.name === this.ticker.toUpperCase())) {
           // если такое уже есть, чистим инпут и выводим тикерЧек
           this.ticker = "";
           return (this.tickerCheck = true);
@@ -408,9 +400,6 @@ export default {
         } else {
           this.tickers = [...this.tickers, newTicker];
           this.filter = "";
-
-          // запускаем обновление тикера
-          this.subscribeToUpdates(newTicker.name);
         }
       }
     },
@@ -438,7 +427,7 @@ export default {
       this.ticker = idx;
       this.tickPop = [];
       this.addTicker();
-    }
+    },
   },
 
   // при наступлении каких-то условий, делай то-то
@@ -476,8 +465,8 @@ export default {
         document.title,
         `${window.location.pathname}?filter=${value.filter}&page=${value.page}`
       );
-    }
-  }
+    },
+  },
 };
 </script>
 
