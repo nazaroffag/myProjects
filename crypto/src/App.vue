@@ -365,7 +365,7 @@ export default {
       }
       const exchangeData = await loadTickers(this.tickers.map((t) => t.name));
       this.tickers.forEach((ticker) => {
-        const price = exchangeData[this.ticker.name.toUpperCase()];
+        const price = exchangeData[ticker.name.toUpperCase()];
 
         // строка ниже означает price или -
         ticker.price = price ?? "-";
