@@ -8,30 +8,68 @@ const API_KEY =
 // здесь хранится список функций, которые надо получить, когда изменился какой-то тикер. Это объект {...}
 const tickersHandlers = new Map();
 
+// websocket
+const socket = new WebSocket(
+  `wss://streamer.cryptocompare.com/v2?&api_key=${API_KEY}`
+);
+// aggregate index из cryptocompare
+const AGGREGATE_INDEX = "5";
+
+socket.addEventListener("message", (e) => {
+  // console.log(e);
+  const { TYPE: type, FROMSYMBOL: currency, PRICE: newPrice } = JSON.parse(
+    e.data
+  );
+  if (type !== AGGREGATE_INDEX) {
+    return;
+  }
+  const handlers = tickersHandlers.get(currency) ?? [];
+  handlers.forEach((fn) => fn(newPrice));
+});
+
+function subscribeToTickerOnWebsocket(ticker) {
+  const message = JSON.stringify({
+    action: "SubAdd",
+    subs: [`5~CCCAGG~${ticker}~USD`],
+  });
+  // если сокет открыт, тогда отправляем сообщение
+  if (socket.readyState === WebSocket.OPEN) {
+    socket.send(message);
+    return;
+  }
+  // иначе открываем и отправляем
+  socket.addEventListener(
+    "open",
+    () => {
+      socket.send(message);
+    },
+    { once: true }
+  );
+}
+
 // при конструировании строки запроса лучше использовать URLSearchParams, а не собирать ее из кусочков, как ниже
 // tickersHandlers преобразовываем в строку, разделенную запятой
 // затем преобразовываем данные, чтобы избежать возврата данных, разделенных на 1
-export const loadTickers = () => {
-  if (tickersHandlers.size === 0) {
-    return;
-  }
-
-  fetch(
-    `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${[
-      ...tickersHandlers.keys(),
-    ].join(",")}&tsyms=USD&api_key=${API_KEY}`
-  )
-    .then((r) => r.json())
-    .then((rawData) => {
-      const updatedPrice = Object.fromEntries(
-        Object.entries(rawData).map(([key, value]) => [key, value.USD])
-      );
-      Object.entries(updatedPrice).forEach(([currency, newPrice]) => {
-        const handlers = tickersHandlers.get(currency) ?? [];
-        handlers.forEach((fn) => fn(newPrice));
-      });
-    });
-};
+// export const loadTickers = () => {
+//   if (tickersHandlers.size === 0) {
+//     return;
+//   }
+//   fetch(
+//     `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${[
+//       ...tickersHandlers.keys(),
+//     ].join(",")}&tsyms=USD&api_key=${API_KEY}`
+//   )
+//     .then((r) => r.json())
+//     .then((rawData) => {
+//       const updatedPrice = Object.fromEntries(
+//         Object.entries(rawData).map(([key, value]) => [key, value.USD])
+//       );
+//       Object.entries(updatedPrice).forEach(([currency, newPrice]) => {
+//         const handlers = tickersHandlers.get(currency) ?? [];
+//         handlers.forEach((fn) => fn(newPrice));
+//       });
+//     });
+// };
 
 // Object.entries из объекта {a:1, b:2} вернет объект {['a':1],['b':2]}, а затем с помощью map это преобразовывается в такой же массив, в котором value => 1/value, а затем с помощью fromEntries возвращает это обратно
 
@@ -40,6 +78,7 @@ export const loadTickers = () => {
 export const subscribeToTicker = (ticker, cb) => {
   const subscribers = tickersHandlers.get(ticker) || [];
   tickersHandlers.set(ticker, [...subscribers, cb]);
+  subscribeToTickerOnWebsocket(ticker);
 };
 
 // функция коллбэк, которая позволяет отписаться от функции, навешенной на тикер
@@ -59,4 +98,4 @@ export const unsubscribeFromTicker = (ticker) => {
 // посмотреть в консоли содержимое переменной
 // window.tickers = tickers;
 
-setInterval(loadTickers, 5000);
+// setInterval(loadTickers, 5000);
