@@ -20,36 +20,49 @@ socket.addEventListener("message", (e) => {
   const { TYPE: type, FROMSYMBOL: currency, PRICE: newPrice } = JSON.parse(
     e.data
   );
-  if (type !== AGGREGATE_INDEX) {
+  if (type !== AGGREGATE_INDEX || newPrice === undefined) {
     return;
   }
   const handlers = tickersHandlers.get(currency) ?? [];
   handlers.forEach((fn) => fn(newPrice));
 });
 
-function subscribeToTickerOnWebsocket(ticker) {
-  const message = JSON.stringify({
-    action: "SubAdd",
-    subs: [`5~CCCAGG~${ticker}~USD`],
-  });
+// отправка на WebSocket. Здесь общий механизм отправки
+function sendToWebSocket(message) {
+  const stringifiedMessage = JSON.stringify(message);
   // если сокет открыт, тогда отправляем сообщение
   if (socket.readyState === WebSocket.OPEN) {
-    socket.send(message);
+    socket.send(stringifiedMessage);
     return;
   }
   // иначе открываем и отправляем
   socket.addEventListener(
     "open",
     () => {
-      socket.send(message);
+      socket.send(stringifiedMessage);
     },
     { once: true }
   );
+}
+// деталь спецификации к криптобирже. Поэтому вынесена в отдельную функцию
+function subscribeToTickerOnWebsocket(ticker) {
+  sendToWebSocket({
+    action: "SubAdd",
+    subs: [`5~CCCAGG~${ticker}~USD`],
+  });
+}
+// отписка от тикера
+function unSubscribeFromTickerOnWS(ticker) {
+  sendToWebSocket({
+    action: "SubRemove",
+    subs: [`5~CCCAGG~${ticker}~USD`],
+  });
 }
 
 // при конструировании строки запроса лучше использовать URLSearchParams, а не собирать ее из кусочков, как ниже
 // tickersHandlers преобразовываем в строку, разделенную запятой
 // затем преобразовываем данные, чтобы избежать возврата данных, разделенных на 1
+//
 // export const loadTickers = () => {
 //   if (tickersHandlers.size === 0) {
 //     return;
@@ -94,6 +107,7 @@ export const subscribeToTicker = (ticker, cb) => {
 // пока используем этот вариант, когда при удалении тикера удаляется весь тикер месте с вложенными функциями
 export const unsubscribeFromTicker = (ticker) => {
   tickersHandlers.delete(ticker);
+  unSubscribeFromTickerOnWS(ticker);
 };
 // посмотреть в консоли содержимое переменной
 // window.tickers = tickers;
