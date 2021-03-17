@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="container mx-auto flex flex-col items-center bg-gray-100 p-4">
     <!-- прелоадер -->
@@ -221,7 +222,7 @@
 </template>
 
 <script>
-import { loadTickers } from "./api";
+import { subscribeToTicker, unsubscribeFromTicker } from "./api";
 
 export default {
   name: "App",
@@ -254,6 +255,15 @@ export default {
     const windowData = Object.fromEntries(
       new URL(window.location).searchParams.entries()
     );
+
+    // const VALID_KEYS = ["filter", "page"];
+
+    // VALID_KEYS.forEach((key) => {
+    //   if (windowData[key]) {
+    //     this[key] = windowData[key];
+    //   }
+    // });
+
     if (windowData.filter) {
       this.filter = windowData.filter;
     }
@@ -263,13 +273,18 @@ export default {
     // вместо if можно записать так:
     // Object.assign(this.windowData);
 
-    // загружаем данные из localStorage
+    // загружаем данные из localStorage и навешиваем функции
     const tickersData = localStorage.getItem("cryptonomicon-list");
     if (tickersData) {
       this.tickers = JSON.parse(tickersData);
+      this.tickers.forEach((ticker) => {
+        subscribeToTicker(ticker.name, (newPrice) =>
+          this.updateTicker(ticker.name, newPrice)
+        );
+      });
     }
     // каждые 5 секунд вызываем метод для обновления тикеров
-    setInterval(this.updateTickers, 5000);
+    setInterval(this.updateTicker, 5000);
 
     // загружаем список тикеров из API Cryptocompare
     setTimeout(async () => {
@@ -358,19 +373,25 @@ export default {
     // метод, обновляющий тикеры за счет запроса к АПИ по имени тикера
     // массив тикеров пустой, сразу выходим
     // иначе запрос к api.js и изменение массива тикеров с добавлением цены
-
-    async updateTickers() {
-      if (!this.tickers.length) {
-        return;
-      }
-      const exchangeData = await loadTickers(this.tickers.map((t) => t.name));
-      this.tickers.forEach((ticker) => {
-        const price = exchangeData[ticker.name.toUpperCase()];
-
-        // строка ниже означает price или -
-        ticker.price = price ?? "-";
-      });
+    updateTicker(tickerName, price) {
+      this.tickers
+        .filter((t) => t.name === tickerName)
+        .forEach((t) => {
+          t.price = price;
+        });
     },
+
+    // async updateTickers() {
+    //   // if (!this.tickers.length) {
+    //   //   return;
+    //   // }
+    //   // // const exchangeData = await loadTickers(this.tickers.map((t) => t.name));
+    //   // this.tickers.forEach((ticker) => {
+    //   //   const price = exchangeData[ticker.name.toUpperCase()];
+    //   //   // строка ниже означает price или -
+    //   //   ticker.price = price ?? "-";
+    //   // });
+    // },
     // метод форматирования цены
     formatPrice(price) {
       if (price === "-") {
@@ -401,16 +422,21 @@ export default {
         } else {
           this.tickers = [...this.tickers, newTicker];
           this.filter = "";
+          subscribeToTicker(newTicker.name, (newPrice) =>
+            this.updateTicker(newTicker.name, newPrice)
+          );
+          this.ticker = "";
         }
       }
     },
 
     // удаление тикера
-    delTicker(idx) {
-      this.tickers.splice(idx, 1);
-      if (this.selectedTicker === idx) {
+    delTicker(tickerToRemove) {
+      this.tickers.splice(tickerToRemove, 1);
+      if (this.selectedTicker === tickerToRemove) {
         this.selectedTicker = null;
       }
+      unsubscribeFromTicker(tickerToRemove.name);
 
       // сброс страницы вниз, если это удалился последний тикер на странице (этот переписали в watch, потому что это логика Когда -> То)
       // if (this.paginatedTickers.length == 0 && this.page > 1) {
