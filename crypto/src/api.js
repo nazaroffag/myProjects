@@ -17,10 +17,15 @@ const AGGREGATE_INDEX = "5";
 
 socket.addEventListener("message", (e) => {
   // console.log(e);
-  const { TYPE: type, FROMSYMBOL: currency, PRICE: newPrice } = JSON.parse(
-    e.data
-  );
+  const {
+    TYPE: type,
+    FROMSYMBOL: currency,
+    PRICE: newPrice,
+    MESSAGE: messageWS,
+  } = JSON.parse(e.data);
   if (type !== AGGREGATE_INDEX || newPrice === undefined) {
+    const messageWSI = tickersHandlers.get(messageWS);
+    console.log(messageWSI);
     return;
   }
   const handlers = tickersHandlers.get(currency) ?? [];

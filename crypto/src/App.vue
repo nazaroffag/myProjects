@@ -142,7 +142,10 @@
             v-bind:class="{ 'border-4': selectedTicker == t }"
             class="bg-white overflow-hidden shadow rounded-lg border-purple-800 border-solid cursor-pointer"
           >
-            <div class="px-4 py-5 sm:p-6 text-center">
+            <div
+              class="px-4 py-5 sm:p-6 text-center"
+              v-bind:class="{ 'bg-red-100': t.price === '-' }"
+            >
               <dt class="text-sm font-medium text-gray-500 truncate">
                 {{ t.name }} - USD
               </dt>
@@ -370,6 +373,9 @@ export default {
       }
     },
 
+    // метод проверки цены, если она "-", то делаем кросс-курс через BTC
+    // convertPrice(price) {},
+
     // метод, обновляющий тикеры за счет запроса к АПИ по имени тикера
     // массив тикеров пустой, сразу выходим
     // иначе запрос к api.js и изменение массива тикеров с добавлением цены
@@ -398,6 +404,16 @@ export default {
     // метод форматирования цены
     formatPrice(price) {
       if (price === "-") {
+        // // подписались на обновление ВТС через WebSocket
+        // const tickerToCross = "BTC";
+        // subscribeToTicker(tickerToCross, (priceToConvert) =>
+        //   console.log(tickerToCross, priceToConvert)
+        // );
+
+        // сделать запрос через fetch, получать цену BTCD в USD через loadTickers
+        // конвертировать цену в онлайне. За 1 BTCD - 10 баксов, за 1 ... - ... баксов
+        // возвратить прайс
+
         return price;
       }
       return price > 1 ? price.toFixed(2) : price.toPrecision(2);
@@ -433,12 +449,28 @@ export default {
       }
     },
 
+    // удаление данных из localStorage
+    removeLocalStorageValue(target) {
+      const storageData = localStorage.getItem("cryptonomicon-list");
+      let newStorage = [];
+      if (storageData) {
+        const tempStorage = JSON.parse(storageData);
+        for (let i = 0; i <= localStorage.length; i++) {
+          if (i !== target) {
+            newStorage.push(tempStorage[i]);
+          }
+        }
+        localStorage.setItem("cryptonomicon-list", JSON.stringify(newStorage));
+      }
+    },
+
     // удаление тикера
     delTicker(tickerToRemove) {
       this.tickers.splice(tickerToRemove, 1);
       if (this.selectedTicker === tickerToRemove) {
         this.selectedTicker = null;
       }
+      this.removeLocalStorageValue(tickerToRemove);
       unsubscribeFromTicker(tickerToRemove.name);
 
       // сброс страницы вниз, если это удалился последний тикер на странице (этот переписали в watch, потому что это логика Когда -> То)
