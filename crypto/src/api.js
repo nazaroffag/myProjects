@@ -17,15 +17,10 @@ const AGGREGATE_INDEX = "5";
 
 socket.addEventListener("message", (e) => {
   // console.log(e);
-  const {
-    TYPE: type,
-    FROMSYMBOL: currency,
-    PRICE: newPrice,
-    MESSAGE: messageWS,
-  } = JSON.parse(e.data);
+  const { TYPE: type, FROMSYMBOL: currency, PRICE: newPrice } = JSON.parse(
+    e.data
+  );
   if (type !== AGGREGATE_INDEX || newPrice === undefined) {
-    const messageWSI = tickersHandlers.get(messageWS);
-    console.log(messageWSI);
     return;
   }
   const handlers = tickersHandlers.get(currency) ?? [];
@@ -63,6 +58,19 @@ function unSubscribeFromTickerOnWS(ticker) {
     subs: [`5~CCCAGG~${ticker}~USD`],
   });
 }
+// подписка на BTC для кросс-курса
+function subscribeToBTConWebsocket(ticker) {
+  sendToWebSocket({
+    action: "SubAdd",
+    subs: [`5~CCCAGG~${ticker}~BTC`],
+  });
+}
+// сама функция-подписчик для кросс-курса BTC
+export const subscribeToCrossBTC = (ticker, cb) => {
+  const subscribers = tickersHandlers.get(ticker) || [];
+  tickersHandlers.set(ticker, [...subscribers, cb]);
+  subscribeToBTConWebsocket(ticker);
+};
 
 // при конструировании строки запроса лучше использовать URLSearchParams, а не собирать ее из кусочков, как ниже
 // tickersHandlers преобразовываем в строку, разделенную запятой

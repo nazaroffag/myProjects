@@ -183,7 +183,10 @@
           <h3 class="text-lg leading-6 font-medium text-gray-900 my-8">
             {{ selectedTicker.name }} - USD
           </h3>
-          <div class="flex items-end border-gray-600 border-b border-l h-64">
+          <div
+            class="flex items-end border-gray-600 border-b border-l h-64"
+            ref="graph"
+          >
             <div
               v-for="(bar, idx) in normalizedGraph"
               :key="idx"
@@ -227,6 +230,14 @@
 <script>
 import { subscribeToTicker, unsubscribeFromTicker } from "./api";
 
+// Задачи для самостоятельной работы:
+// [ ] Перекрашивание в красный, если приходит "-" из WebSocket
+// [ ] Кросс-курс через BTC
+// [ ] Сложная задача по одновременной работе в 2х и более вкладках. Видео 21 WebWorkers
+// [ ] исправить фиксированное число 38 (число элементов графика). Сделать ее динамически изменяющимся в зависимости от ширины 1 столбца графика. Через ref на столбике
+// [ ] починить переключение между страницами
+// [ ] вынести localStorage в api ls
+
 export default {
   name: "App",
   data() {
@@ -251,6 +262,8 @@ export default {
       page: 1,
       // поле фильтра
       filter: "",
+      // максимальное число элементов в графике
+      maxGraphElements: 1,
     };
   },
   created() {
@@ -350,8 +363,27 @@ export default {
     },
   },
 
+  // методы, которые происходят при формировании DOM. Хотя это можно делать и в created
+  mounted() {
+    // при изменении размера окна пересчитывать ширину ref graph и записывать ее в переменную для использования
+    window.addEventListener("resize", this.calculateMaxGraphElements);
+  },
+  // если компоненты или DOM-элементы удаляются, то нужно убрать (отписаться от обрабочика события) с них события, чтобы не висели в памяти
+  // эти методы срабатывают при удалении компонента
+  beforeUnmount() {
+    window.removeEventListener("resize", this.calculateMaxGraphElements);
+  },
+
   // здесь указывается логика, срабатывающая при выполнении действий. Нажал -> сработало
   methods: {
+    // определение максимальной ширины элемента для вывода графика, для обновления ref graph
+    calculateMaxGraphElements() {
+      if (!this.$refs.graph) {
+        return;
+      }
+      this.maxGraphElements = this.$refs.graph.clientWidth / 38;
+    },
+
     // скрытие предупреждения о дублировании тикера
     check() {
       this.tickerCheck = false;
@@ -373,9 +405,6 @@ export default {
       }
     },
 
-    // метод проверки цены, если она "-", то делаем кросс-курс через BTC
-    // convertPrice(price) {},
-
     // метод, обновляющий тикеры за счет запроса к АПИ по имени тикера
     // массив тикеров пустой, сразу выходим
     // иначе запрос к api.js и изменение массива тикеров с добавлением цены
@@ -385,6 +414,10 @@ export default {
         .forEach((t) => {
           if (t === this.selectedTicker) {
             this.graph.push(price);
+            // пока число элементов графика больше максимального их числа, удаляем первые элементы массива graph, чтобы ограничить число элементов внутри графика
+            while (this.graph.length > this.maxGraphElements) {
+              this.graph.shift();
+            }
           }
           t.price = price;
         });
@@ -401,19 +434,10 @@ export default {
     //   //   ticker.price = price ?? "-";
     //   // });
     // },
+
     // метод форматирования цены
     formatPrice(price) {
       if (price === "-") {
-        // // подписались на обновление ВТС через WebSocket
-        // const tickerToCross = "BTC";
-        // subscribeToTicker(tickerToCross, (priceToConvert) =>
-        //   console.log(tickerToCross, priceToConvert)
-        // );
-
-        // сделать запрос через fetch, получать цену BTCD в USD через loadTickers
-        // конвертировать цену в онлайне. За 1 BTCD - 10 баксов, за 1 ... - ... баксов
-        // возвратить прайс
-
         return price;
       }
       return price > 1 ? price.toFixed(2) : price.toPrecision(2);
@@ -482,6 +506,13 @@ export default {
     // логика выбора тикера
     select(ticker) {
       this.selectedTicker = ticker;
+      // при выборе тикера вычисляется ширина элемента для вывода графика
+      // $nextTick позволяет Vue сначала дождатьс формирования данного элемента или обновления DOMa, а затем выполнить функцию внутри
+      //
+      this.$nextTick(() => {
+        this.calculateMaxGraphElements();
+      });
+      // можно записать вот так this.$nextTick().then(this.calculateMaxGraphElements());
     },
 
     // метод добавления тикера из автокомплита
