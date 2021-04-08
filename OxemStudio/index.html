@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Лизинг автомобилей. Рассчитайте стоимость автомобиля в лизинг."
+    />
+    <link rel="stylesheet" href="./style/normalize.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>OXEM test</title>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="cover"></div>
+      <div id="hiddenMenu">
+        <div id="close"></div>
+        <nav class="hiddenMenuItem">
+          <a href="#">Лизинг</a>
+        </nav>
+        <nav class="hiddenMenuItem">
+          <a href="#">Каталог</a>
+        </nav>
+        <nav class="hiddenMenuItem">
+          <a href="#">О нас</a>
+        </nav>
+        <div class="requestButton">Оставить заявку</div>
+      </div>
+
+      <header>
+        <a id="logo" href="#">
+          <div id="logoLeasing"></div>
+          <div id="logoCar"></div>
+        </a>
+        <div id="lease" class="hidden">лизинговая компания</div>
+        <ul id="menu" class="hiddenTablet">
+          <li class="menuItem">
+            <a href="#">Лизинг</a>
+            <ul id="paddingMenu">
+              <li class="paddingMenuItem">
+                <a href="#">Для личного пользования</a>
+              </li>
+              <li class="paddingMenuItem">
+                <a href="#">Для юридических лиц</a>
+              </li>
+              <li class="paddingMenuItem">
+                <a href="#">Калькулятор</a>
+              </li>
+            </ul>
+          </li>
+          <li class="menuItem">
+            <a href="#">Каталог</a>
+          </li>
+          <li class="menuItem">
+            <a href="#">О нас</a>
+          </li>
+        </ul>
+        <div class="requestButton hiddenTablet" id="requestButtonWhite">
+          Оставить заявку
+        </div>
+        <div id="menuButton" class="hiddenDesktop"></div>
+      </header>
+
+      <main>
+        <form action="" method="POST" id="openForm">
+          <div id="openFormHeader">
+            <h5>Онлайн-заявка</h5>
+            <div id="close"></div>
+          </div>
+          <p>
+            Заполните форму, и мы вскоре свяжемся с вами, чтобы ответить на все
+            вопросы
+          </p>
+          <section>
+            <div id="complexInput">
+              <label for="inputTel" id="inputTelHead">Телефон</label>
+              <input
+                type="tel"
+                name="inputTel"
+                id="inputTel"
+                placeholder="+7 (921) 123 45 67"
+              />
+            </div>
+            <input
+              type="text"
+              id="nameInput"
+              class="formInput"
+              placeholder="Имя"
+            />
+          </section>
+          <section id="second">
+            <div class="requestButton">Оставить заявку</div>
+            <p>
+              Нажимая на кнопку «Оставить заявку», я даю согласие
+              <span>на обработку персональных данных</span>
+            </p>
+          </section>
+          <div id="icons">
+            <a href="#" class="icon"><img src="./img/whatsapp.svg" alt="" /></a>
+            <a href="#" class="icon"><img src="./img/telegram.svg" alt="" /></a>
+          </div>
+        </form>
+        <div id="headerCorrector"></div>
+        <div id="slider">
+          <h1>Авто в лизинг для физических лиц</h1>
+          <h4 class="hiddenTablet">Получите машину за 5 дней</h4>
+          <div class="requestButton">Оставить заявку</div>
+          <div id="sliderElements">
+            <div>
+              <div class="sliderDot"></div>
+              <div class="sliderDot"></div>
+              <div class="sliderDot"></div>
+              <div class="sliderDot"></div>
+              <div class="sliderDot"></div>
+            </div>
+            <div class="hidden">
+              <div class="sliderArrow"></div>
+              <div class="sliderArrow"></div>
+            </div>
+          </div>
+        </div>
+
+        <form action="" method="POST" id="mainForm">
+          <h2>Рассчитайте стоимость автомобиля в лизинг</h2>
+          <div class="inputGroup">
+            <label for="autoPrice">Стоимость автомобиля</label>
+            <input
+              type="number"
+              name="autoPrice"
+              id="autoPriceInput"
+              class="formInput"
+            />
+            <input
+              type="range"
+              name="autoPrice"
+              id="autoPriceRange"
+              class="formRange"
+            />
+            <div class="afterInput">&#8381;</div>
+          </div>
+          <div class="inputGroup">
+            <label for="autoFirstPay">Первоначальный взнос</label>
+            <input
+              type="number"
+              name="autoFirstPay"
+              id="autoFirstPayInput"
+              class="formInput"
+            />
+            <input
+              type="range"
+              name="autoFirstPay"
+              id="autoFirstPayRange"
+              class="formRange"
+            />
+            <div class="afterInput" id="percent">10%</div>
+          </div>
+          <div class="inputGroup">
+            <label for="autoLeasePeriod">Срок лизинга</label>
+            <input
+              type="number"
+              name="autoLeasePeriod"
+              id="autoLeasePeriodInput"
+              class="formInput"
+            />
+            <input
+              type="range"
+              name="autoLeasePeriod"
+              id="autoLeasePeriodRange"
+              class="formRange"
+            />
+            <div class="afterInput" id="month">мес.</div>
+          </div>
+          <div class="inputGroup">
+            <label for="autoTotalAmount">Сумма договора лизинга</label>
+            <input
+              type="text"
+              name="autoTotalAmount"
+              id="autoTotalAmountInput"
+              class="formInputWhite"
+              value="4 467 313 ₽"
+              readonly
+            />
+          </div>
+          <div class="inputGroup">
+            <label for="autoMonthlyPayment">Ежемесячный платеж от</label>
+            <input
+              type="text"
+              name="autoMonthlyPayment"
+              id="autoMonthlyPaymentInput"
+              class="formInputWhite"
+              value="16 000 ₽"
+              readonly
+            />
+          </div>
+          <div class="requestButton">Оставить заявку</div>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>
