@@ -1,0 +1,143 @@
+#inptWrapper {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  position: relative;
+}
+#nameInpt {
+  border: 1px solid black;
+  outline: none;
+  width: 200px;
+  height: 60px;
+  padding-left: 15px;
+  padding-right: 50px;
+  font-size: 16px;
+  border-radius: 3px;
+}
+#nameInpt:hover {
+  border-radius: 10px;
+  transition: all ease-in-out 0.7s;
+}
+#nameInpt:not(:hover) {
+  border-radius: 3px;
+  transition: all ease-in-out 0.7s;
+}
+#inptWrapper button {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  top: 15px;
+  left: 225px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.loader {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 6px solid #000;
+  border-left-color: #333;
+  border-bottom-color: #555;
+  border-right-color: transparent;
+  border-radius: 100%;
+  -webkit-animation: loader 0.5s infinite linear;
+  -moz-animation: loader 0.5s infinite linear;
+  animation: loader 0.5s infinite linear;
+  top: 450px;
+  left: 48%;
+}
+@-webkit-keyframes loader {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes loader {
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#table-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+table {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+thead {
+  font-weight: 600;
+}
+.user-photo-wrapper {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  box-sizing: border-box;
+}
+.user-photo {
+  width: calc(4rem - 4px);
+  height: calc(4rem - 6px);
+  top: 2px;
+  right: 2px;
+  position: absolute;
+}
+.user-photo:hover,
+.user-photo:focus,
+.user-photo:active {
+  width: calc(4rem + 16px);
+  height: calc(4rem + 18px);
+  top: -8px;
+  right: -9px;
+  border: 1px solid black;
+  z-index: 2;
+}
+.email {
+  word-break: break-all;
+  position: relative;
+}
+.delete-user {
+  visibility: hidden;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  right: 4%;
+  top: 24%;
+  position: absolute;
+  cursor: pointer;
+}
+.delete-user:hover,
+.delete-user:active,
+.delete-user:focus,
+#inptWrapper button:hover,
+#inptWrapper button:focus,
+#inptWrapper button:active {
+  color: white;
+  background-color: black;
+}
+tr:hover .delete-user {
+  visibility: visible;
+}
+#no-results {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
