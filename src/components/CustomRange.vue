@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="textOut">{{ textOut }}%</div>
+    <div id="range__textOut">{{ textOut }}%</div>
     <input
       type="range"
       name="range-input"
@@ -12,12 +12,12 @@
       @input="changeValue"
       :percent="percent"
     />
-    <div id="range-percent">
+    <div id="range__percent">
       <div
         v-for="item in percentItems"
         :key="item"
         @click="selectPercent(item)"
-        class="range-percent-item"
+        class="range__percent__item"
       >
         {{ item }}%
       </div>

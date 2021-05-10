@@ -1,38 +1,45 @@
-#inptWrapper {
+#userList__wrapper {
   margin-top: 50px;
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
   position: relative;
 }
-#nameInpt {
+#userList__nameInpt {
   border: 1px solid black;
   outline: none;
   width: 200px;
-  height: 60px;
+  height: 4rem;
   padding-left: 15px;
   padding-right: 50px;
-  font-size: 16px;
+  font-size: 1rem;
   border-radius: 3px;
 }
-#nameInpt:hover {
+#nuserList__ameInpt:hover {
   border-radius: 10px;
   transition: all ease-in-out 0.7s;
 }
-#nameInpt:not(:hover) {
+#userList__nameInpt:not(:hover) {
   border-radius: 3px;
   transition: all ease-in-out 0.7s;
 }
-#inptWrapper button {
+#userList__clearInpt {
   position: absolute;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  top: 15px;
+  top: 15%;
   left: 225px;
   border: none;
   outline: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-list__icon {
+  width: 20px;
+  height: 20px;
 }
 
 .loader {
@@ -67,8 +74,7 @@
     transform: rotate(360deg);
   }
 }
-
-#table-wrapper {
+#userList__table__wrapper {
   width: 100%;
   box-sizing: border-box;
   margin-top: 15px;
@@ -83,22 +89,22 @@ table {
 thead {
   font-weight: 600;
 }
-.user-photo-wrapper {
+.userList__table__user_photo__wrapper {
   width: 4rem;
   height: 4rem;
   position: relative;
   box-sizing: border-box;
 }
-.user-photo {
+.userList__table__user_photo {
   width: calc(4rem - 4px);
   height: calc(4rem - 6px);
   top: 2px;
   right: 2px;
   position: absolute;
 }
-.user-photo:hover,
-.user-photo:focus,
-.user-photo:active {
+.userList__table__user_photo:hover,
+.userList__table__user_photo:focus,
+.userList__table__user_photo:active {
   width: calc(4rem + 16px);
   height: calc(4rem + 18px);
   top: -8px;
@@ -106,38 +112,108 @@ thead {
   border: 1px solid black;
   z-index: 2;
 }
-.email {
-  word-break: break-all;
+.userList__table__email {
+  word-wrap: break-word;
   position: relative;
 }
-.delete-user {
+.userList__table__delete-user,
+.userList__table__userInfo {
   visibility: hidden;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   border: none;
   outline: none;
-  right: 4%;
-  top: 24%;
   position: absolute;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  background-color: rgb(235, 232, 232);
 }
-.delete-user:hover,
-.delete-user:active,
-.delete-user:focus,
-#inptWrapper button:hover,
-#inptWrapper button:focus,
-#inptWrapper button:active {
-  color: white;
+.userList__table__delete-user {
+  right: 4%;
+  top: 15%;
+}
+.userList__table__userInfo {
+  right: 33%;
+  top: 15%;
+  text-decoration: none;
+}
+.userList__table__delete-user:hover,
+.userList__table__delete-user:active,
+.userList__table__delete-user:focus,
+.userList__table__userInfo:hover,
+.userList__table__userInfo:active,
+.userList__table__userInfo:focus,
+#userList__clearInpt:hover,
+#userList__clearInpt:focus,
+#userList__clearInpt:active {
   background-color: black;
+  fill: #fff;
+  stroke: #fff;
 }
-tr:hover .delete-user {
+tr:hover .userList__table__delete-user,
+tr:hover .userList__table__userInfo {
   visibility: visible;
 }
-#no-results {
+#userList__table__no_results {
   width: 100%;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  #userList__clearInpt {
+    top: 20%;
+  }
+  .userList__table__delete-user {
+    top: 18%;
+  }
+  .userList__table__userInfo {
+    right: 15%;
+    top: 18%;
+  }
+}
+
+@media (min-width: 1024px) {
+  #userList__clearInpt {
+    top: 23%;
+  }
+  .userList__table__delete-user {
+    top: 22%;
+  }
+  .userList__table__userInfo {
+    right: 13%;
+    top: 22%;
+  }
+}
+
+@media (min-width: 1440px) {
+  #userList__clearInpt {
+    top: 25%;
+  }
+  .userList__table__delete-user {
+    top: 24%;
+  }
+  .userList__table__userInfo {
+    right: 10%;
+    top: 24%;
+  }
+}
+
+@media (min-width: 2560px) {
+  #userList__clearInpt {
+    top: 25%;
+  }
+  .userList__table__delete-user {
+    top: 25%;
+  }
+  .userList__table__userInfo {
+    right: 9%;
+    top: 25%;
+  }
 }

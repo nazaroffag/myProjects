@@ -1,23 +1,21 @@
 <template>
   <div>
     <custom-range
-      id="range-wrapper"
+      id="range__wrapper"
       :percent="percent"
       @changeValue="displayValue"
     />
-    <user-list />
+    <router-view />
   </div>
 </template>
 
 <script>
 import CustomRange from "./components/CustomRange.vue";
-import UserList from "./components/UserList.vue";
 
 export default {
   name: "App",
   components: {
     CustomRange,
-    UserList,
   },
   data() {
     return {
