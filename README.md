@@ -5,6 +5,15 @@ Components:
 1. custom input range (props + emit)
 
 2. table component. Filter by first name. Click on a row to show icons (go to the user page + delete user)
+   Added form: Add new user
+
+Need to update:
+
+- change userList to a global variable to save the state of the table (use Vuex)
+- add
+- add input validation
+
+////////////////////////////////////
 
 ## Project setup
 

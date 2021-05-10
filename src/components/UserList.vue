@@ -68,6 +68,33 @@
       </tbody>
     </table>
     <div v-if="!emptyList" id="userList__table__no_results">No match found</div>
+    <div
+      id="userData"
+      :style="!userList ? 'margin-top: 70px' : 'margin-top: 15px'"
+    >
+      <input
+        type="text"
+        name="firstNameInpt"
+        title="First Name"
+        placeholder="Enter first name..."
+        v-model="userFirstName"
+      />
+      <input
+        type="text"
+        name="lastNameInpt"
+        title="Last Name"
+        placeholder="Enter last name..."
+        v-model="userLastName"
+      />
+      <input
+        type="text"
+        name="emailInpt"
+        title="Email"
+        placeholder="Enter email..."
+        v-model="userEmail"
+      />
+      <button @click="addNewUser">Add new user</button>
+    </div>
   </div>
 </template>
 
@@ -86,11 +113,27 @@ export default {
       userListMain: null,
       userName: "",
       emptyList: true,
+      userFirstName: null,
+      userLastName: null,
+      userEmail: null,
     };
   },
   methods: {
-    sendUserList() {
-      return this.userList;
+    addNewUser() {
+      let newUserArr = {};
+      let userID = this.userListMain.length + 1;
+
+      if (this.userFirstName && this.userLastName && this.userEmail) {
+        newUserArr["id"] = +userID;
+        newUserArr["email"] = this.userEmail;
+        this.userEmail = null;
+        newUserArr["first_name"] = this.userFirstName;
+        this.userFirstName = null;
+        newUserArr["last_name"] = this.userLastName;
+        this.userLastName = null;
+        newUserArr["avatar"] = "https://reqres.in/img/faces/2-image.jpg";
+      }
+      this.userList[userID - 1] = newUserArr;
     },
     getUsers() {
       if (!this.userList) {
@@ -101,7 +144,7 @@ export default {
           return (this.userList = data.data);
         }, 100);
       } else {
-        return this.userList;
+        return;
       }
     },
     clearInp() {
