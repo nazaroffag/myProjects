@@ -73,6 +73,14 @@
       :style="!userList ? 'margin-top: 70px' : 'margin-top: 15px'"
     >
       <input
+        type="number"
+        name="idInpt"
+        title="UserID"
+        placeholder="Enter user ID..."
+        v-model="userID"
+      />
+
+      <input
         type="text"
         name="firstNameInpt"
         title="First Name"
@@ -113,18 +121,31 @@ export default {
       userListMain: null,
       userName: "",
       emptyList: true,
+      userID: null,
       userFirstName: null,
       userLastName: null,
       userEmail: null,
     };
   },
   methods: {
+    loadUsersFromLocalStorage() {
+      let ArrFromLS = JSON.parse(localStorage.getItem("users-list"));
+      return ArrFromLS;
+    },
+    saveUsersToLocalStorage(users) {
+      localStorage.setItem("users-list", JSON.stringify(users));
+    },
     addNewUser() {
       let newUserArr = {};
-      let userID = this.userListMain.length + 1;
 
-      if (this.userFirstName && this.userLastName && this.userEmail) {
-        newUserArr["id"] = +userID;
+      if (
+        this.userID &&
+        this.userFirstName &&
+        this.userLastName &&
+        this.userEmail
+      ) {
+        newUserArr["id"] = this.userID;
+        this.userID = null;
         newUserArr["email"] = this.userEmail;
         this.userEmail = null;
         newUserArr["first_name"] = this.userFirstName;
@@ -133,10 +154,11 @@ export default {
         this.userLastName = null;
         newUserArr["avatar"] = "https://reqres.in/img/faces/2-image.jpg";
       }
-      this.userList[userID - 1] = newUserArr;
+      this.userList[this.userList.length] = newUserArr;
+      this.saveUsersToLocalStorage(this.userList);
     },
     getUsers() {
-      if (!this.userList) {
+      if (!this.loadUsersFromLocalStorage()) {
         setTimeout(async () => {
           const f = await fetch(`https://reqres.in/api/users?page=1`);
           const data = await f.json();
@@ -144,7 +166,7 @@ export default {
           return (this.userList = data.data);
         }, 100);
       } else {
-        return;
+        return (this.userList = this.loadUsersFromLocalStorage());
       }
     },
     clearInp() {
@@ -158,6 +180,7 @@ export default {
         return;
       }
       this.userList.splice(userToRemove, 1);
+      this.saveUsersToLocalStorage(this.userList);
     },
     updateTable() {
       let temp = this.userListMain;
