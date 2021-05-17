@@ -48,25 +48,13 @@ export default {
   },
 
   methods: {
-    loadCardsFromLocalStorage() {
-      let ArrFromLS = JSON.parse(localStorage.getItem("cards"));
-      return ArrFromLS;
-    },
-    saveCardsToLocalStorage(cards) {
-      localStorage.setItem("cards", JSON.stringify(cards));
-    },
     getCards() {
-      if (!this.loadCardsFromLocalStorage()) {
-        setTimeout(async () => {
-          const f = await fetch(`http://jsonplaceholder.typicode.com/posts`);
-          const data = await f.json();
-          this.cardsMain = data;
-          return (this.cards = data);
-        }, 100);
-      } else {
-        this.cardsMain = this.loadCardsFromLocalStorage();
-        return (this.cards = this.loadCardsFromLocalStorage());
-      }
+      setTimeout(async () => {
+        const f = await fetch(`http://jsonplaceholder.typicode.com/posts`);
+        const data = await f.json();
+        this.cardsMain = data;
+        return (this.cards = data);
+      }, 100);
     },
     updateCards() {
       let tempArr = this.cardsMain;
