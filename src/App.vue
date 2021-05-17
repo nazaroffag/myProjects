@@ -50,7 +50,7 @@ export default {
   methods: {
     getCards() {
       setTimeout(async () => {
-        const f = await fetch(`http://jsonplaceholder.typicode.com/posts`);
+        const f = await fetch(`https://jsonplaceholder.typicode.com/posts`);
         const data = await f.json();
         this.cardsMain = data;
         return (this.cards = data);
