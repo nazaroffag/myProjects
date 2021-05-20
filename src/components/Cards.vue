@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div v-if="cards" id="pages__wrapper">
+    <!-- <div v-if="cards" id="pages__wrapper">
       <div class="pages__wrapper__fixer">
         <div class="pages__arrow" v-if="page > 1" v-on:click="page = page - 1">
           <left-arrow />
@@ -73,11 +73,11 @@
           <right-arrow />
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
-//? [ ] изменить число карточек на экране в зависимости от его размера
+//? [х] изменить число карточек на экране в зависимости от его размера
 //? [ ] тогда убрать стрелку вверх
 //? [ ] отобразить в строке браузера Users
 //? [ ] сделать сэйв в LocalStorage
@@ -101,6 +101,8 @@ export default {
       cardsMain: [],
       page: 1,
       show: false,
+      cardsAmount: 3,
+      pageWidth: null,
     };
   },
   props: {
@@ -129,6 +131,9 @@ export default {
       this.show = true;
       return (this.cards = [...cards]);
     }, 100);
+    this.pageWidth = this.checkPageWidth;
+    console.log(this.pageWidth);
+    this.countCardsAmount();
   },
   methods: {
     filterCards(word) {
@@ -145,6 +150,15 @@ export default {
         left: 0,
       });
     },
+    countCardsAmount() {
+      if (this.pageWidth < 400) {
+        this.cardsAmount = 3;
+      } else if (this.pageWidth > 401 && this.pageWidth < 1200) {
+        this.cardsAmount = 6;
+      } else if (this.pageWidth > 1200) {
+        this.cardsAmount = 8;
+      }
+    },
   },
   watch: {
     search: {
@@ -155,25 +169,25 @@ export default {
     },
   },
   computed: {
+    checkPageWidth() {
+      return window.innerWidth;
+    },
     filteredCards() {
       return Object.values(this.cardsMain).filter((card) =>
         card.name.toLowerCase().includes(this.search.toLowerCase())
       );
     },
     pages() {
-      return Math.round(this.cards.length / 6);
+      return Math.round(this.cards.length / this.cardsAmount);
     },
     paginatedPages() {
       return this.cards.slice(this.startIndex, this.endIndex);
     },
-    // расчет стартовой страницы фильтра
     startIndex() {
-      return (this.page - 1) * 6;
+      return (this.page - 1) * this.cardsAmount;
     },
-
-    // расчет последней страницы фильтра
     endIndex() {
-      return this.page * 6;
+      return this.page * this.cardsAmount;
     },
     hasNextPage() {
       return this.cards.length > this.endIndex;
