@@ -1,6 +1,6 @@
-# voodoo-rocks
+# voodoo-task
 
-Test task for "Voodoo Rocks"
+Task for "Voodoo Rocks"
 Задача: разработать одностраничное приложение, которое позволяет получать, отображать и фильтровать данные с внешнего REST API.
 Источник данных - онлайн-сервис http://jsonplaceholder.typicode.com/
 Необходимо получить и отобразить список публикаций /posts
