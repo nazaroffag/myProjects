@@ -15,6 +15,10 @@
 
 <script>
 import SearchIcon from "../assets/SearchIcon.vue";
+import {
+  loadDataFromLocalStorage,
+  saveDataToLocalStorage,
+} from "./LocalStorage.js";
 
 export default {
   components: {
@@ -25,8 +29,16 @@ export default {
       searchValue: null,
     };
   },
+  created() {
+    let filterData = loadDataFromLocalStorage;
+    if (filterData) {
+      this.searchValue = filterData;
+      this.$emit("changeSearch", this.searchValue);
+    } else this.searchValue = "";
+  },
   methods: {
     changeSearch() {
+      saveDataToLocalStorage(this.searchValue);
       this.$emit("changeSearch", this.searchValue);
     },
   },

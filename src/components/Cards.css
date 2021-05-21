@@ -61,7 +61,6 @@
   color: cornflowerblue;
   margin-bottom: 10px;
 }
-
 .card__text {
   margin: 0;
   font-size: 0.8rem;
@@ -74,12 +73,10 @@
   font-style: italic;
   text-align: end;
 }
-
 .card__header:first-letter,
 .card__text::first-letter {
   text-transform: uppercase;
 }
-
 #cards__arrow {
   width: 32px;
   height: 32px;
@@ -89,6 +86,9 @@
   z-index: 25;
   background-color: white;
   border-radius: 50%;
+}
+#cards__noResults {
+  margin-top: 5%;
 }
 
 /* loader */
@@ -105,7 +105,7 @@
   -moz-animation: loader 0.5s infinite linear;
   animation: loader 0.5s infinite linear;
   top: 100px;
-  left: 45%;
+  left: calc(100% / 2 - 10px);
 }
 @-webkit-keyframes loader {
   100% {
@@ -132,9 +132,11 @@
   }
   #cards__wrapper {
     flex-direction: row;
+    justify-content: flex-start;
   }
   .card__wrapper {
     width: 32%;
+    margin-right: 1%;
   }
   .page {
     width: 17px;

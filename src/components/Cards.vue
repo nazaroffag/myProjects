@@ -37,61 +37,29 @@
       </div>
 
       <div
-        v-if="cards ? cards.length > 0 : false"
-        id="cards__arrow"
-        @click="moveToSearch"
-      >
-        <top-arrow />
-      </div>
-
-      <div
         v-if="(cards ? cards.length === 0 : false) && (show ? true : false)"
         id="cards__noResults"
       >
         No match found
       </div>
     </div>
-
-    <!-- <div v-if="cards" id="pages__wrapper">
-      <div class="pages__wrapper__fixer">
-        <div class="pages__arrow" v-if="page > 1" v-on:click="page = page - 1">
-          <left-arrow />
-        </div>
-      </div>
-      <div class="pages__wrapper__fixer">
-        <div v-if="cards ? cards.length > 0 : false" class="page">
-          {{ page }}
-        </div>
-      </div>
-      <div class="pages__wrapper__fixer">
-        <div
-          class="pages__arrow"
-          v-if="hasNextPage"
-          v-on:click="page = page + 1"
-          @click="moveToSearch"
-        >
-          <right-arrow />
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
 //? [х] изменить число карточек на экране в зависимости от его размера
-//? [ ] тогда убрать стрелку вверх
+//? [x] тогда убрать стрелку вверх
 //? [ ] отобразить в строке браузера Users
-//? [ ] сделать сэйв в LocalStorage
-//? [ ] убрать загрузку в отдельный API
-//? [ ] поправить верстку на последней page
+//? [x] сделать сэйв в LocalStorage
+//? [ ] сделать загрузку из LS фильтра при запуске
+//? [x] поправить верстку на последней page
 
 <script>
-import TopArrow from "../assets/TopArrow.vue";
 import LeftArrow from "../assets/LeftArrow.vue";
 import RightArrow from "../assets/RightArrow.vue";
+import { loadDataFromLocalStorage } from "./LocalStorage.js";
 
 export default {
   components: {
-    TopArrow,
     LeftArrow,
     RightArrow,
   },
@@ -109,7 +77,12 @@ export default {
     search: {
       type: String,
       required: false,
-      default: "",
+      default: function () {
+        let filterData = loadDataFromLocalStorage;
+        if (filterData) {
+          return filterData;
+        } else return "";
+      },
     },
   },
   created() {
@@ -130,10 +103,11 @@ export default {
       this.cardsMain = [...cards];
       this.show = true;
       return (this.cards = [...cards]);
-    }, 100);
+    }, 10);
+
     this.pageWidth = this.checkPageWidth;
-    console.log(this.pageWidth);
     this.countCardsAmount();
+    console.log(this.search);
   },
   methods: {
     filterCards(word) {
@@ -143,20 +117,17 @@ export default {
       this.cards = null;
       this.cards = this.filteredCards;
     },
-    moveToSearch() {
-      window.scrollTo({
-        behavior: "smooth",
-        top: 0,
-        left: 0,
-      });
-    },
     countCardsAmount() {
-      if (this.pageWidth < 400) {
+      if (this.pageWidth <= 400 && this.pageHeight <= 700) {
         this.cardsAmount = 3;
-      } else if (this.pageWidth > 401 && this.pageWidth < 1200) {
+      } else if (this.pageWidth > 401 && this.pageWidth <= 500) {
+        this.cardsAmount = 4;
+      } else if (this.pageWidth > 501 && this.pageWidth <= 699) {
         this.cardsAmount = 6;
-      } else if (this.pageWidth > 1200) {
-        this.cardsAmount = 8;
+      } else if (this.pageWidth > 700 && this.pageWidth <= 1000) {
+        this.cardsAmount = 9;
+      } else if (this.pageWidth > 1000) {
+        this.cardsAmount = 12;
       }
     },
   },
