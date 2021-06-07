@@ -12,7 +12,7 @@ ul {
 }
 .listGroup {
   position: absolute;
-  z-index: -1;
+  z-index: 2;
   opacity: 0;
 }
 .listGroup + label {
@@ -120,8 +120,8 @@ li {
   border-radius: 0.25em;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 50% 50%;
-  top: 2px;
+  background-size: 42% 80%;
+  top: 1px;
   left: 41px;
   background-image: url("../../assets/dot.svg");
 }

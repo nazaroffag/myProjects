@@ -1,6 +1,3 @@
-//? [ ] убирать несортированные boxes, когда снят check
-//? [ ] оптимизировать функцию randomizeBoxes
-//? [ ] удалять несортированные boxes по клику с обновлением input
 //! при переносе функции randomizeBoxes в computed не обновляет массив, берет данные их кэша
 
 <template>
@@ -21,7 +18,7 @@
       >
         Сортировать
       </label>
-      <div v-if="idx.check">
+      <div id="sort" v-if="idx.check">
         <div v-for="(item, idx) in idx.items" :key="idx">
           <div class="sortWrapper" v-if="item.check" id="sortHidden">
             <div
@@ -29,7 +26,6 @@
               v-for="box in item.num"
               :key="box"
               :style="{ background: `${item.color}` }"
-              style="cursor: pointer"
               @click="item.num = +item.num - 1"
             ></div>
           </div>
@@ -40,6 +36,7 @@
             v-for="box in randomizeBoxes(idx.items)"
             :key="`${box + Math.random(1)}`"
             :style="{ background: `${box}` }"
+            @click="delRandomBox(box, idx.items)"
           ></div>
         </div>
       </div>
@@ -55,6 +52,16 @@ export default {
     },
   },
   methods: {
+    delRandomBox(box, arr) {
+      for (let i = 1; i <= Object.keys(arr).length; i++) {
+        if (arr[i]["color"] === box) {
+          arr[i]["num"] = +arr[i]["num"] - 1;
+          if (arr[i]["num"] === 0) {
+            arr[i]["check"] = false;
+          }
+        }
+      }
+    },
     mixBoxes(e) {
       e.target.innerText === "Перемешать"
         ? (e.target.innerText = "Сортировать")
@@ -67,7 +74,7 @@ export default {
       let boxes = [];
       for (let i = 1; i <= Object.keys(e).length; i++) {
         for (let key in e[i]) {
-          if (key == "num" || key == "color") {
+          if ((key == "num" || key == "color") && e[i]["check"] === true) {
             boxes.push(e[i][key]);
           }
         }

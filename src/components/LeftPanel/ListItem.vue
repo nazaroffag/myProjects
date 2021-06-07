@@ -1,7 +1,7 @@
 <template>
   <div id="listWrapper">
     <ul v-for="(idx, list) in lists" :key="idx">
-      <div id="dot" v-if="!checkBox(idx.items)"></div>
+      <div id="dot" v-if="!checkBox(idx.items, idx)"></div>
       <input
         type="checkbox"
         :id="`${removeSpaces(list)}`"
@@ -17,7 +17,7 @@
             :id="`${removeSpaces(list) + removeSpaces(item.name)}`"
             class="listGroup"
             v-model="item.check"
-            @change="updateCheck($event, item)"
+            @change="updateCheck($event, item, lists[list])"
           />
           <label :for="`${removeSpaces(list) + removeSpaces(item.name)}`">{{
             item.name
@@ -118,7 +118,7 @@ export default {
           sum++;
         }
       }
-      if (elements == sum) {
+      if (elements === sum || sum === 0) {
         return true;
       } else {
         return false;
@@ -133,7 +133,25 @@ export default {
       idx.num === 0 ? (idx.check = false) : (idx.check = true);
       this.changeLists();
     },
-    updateCheck(e, idx) {
+    updateCheck(e, idx, list) {
+      if (typeof idx.items !== "undefined") {
+        for (let i = 1; i <= Object.keys(idx.items).length; i++) {
+          idx.items[i]["check"] = true;
+        }
+      }
+      if (typeof idx.items === "undefined") {
+        let sum = 0;
+        for (let i = 1; i <= Object.keys(list.items).length; i++) {
+          if (list.items[i]["check"] === true) {
+            sum++;
+          }
+        }
+        if (sum === 0) {
+          list.check = false;
+        } else {
+          list.check = true;
+        }
+      }
       idx.check = e.target.checked;
       this.changeLists();
     },
