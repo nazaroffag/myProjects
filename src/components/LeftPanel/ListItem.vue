@@ -110,7 +110,7 @@ export default {
     };
   },
   methods: {
-    checkBox(e) {
+    checkBox(e, list) {
       let elements = Object.keys(e).length;
       let sum = 0;
       for (let i = 1; i <= Object.keys(e).length; i++) {
@@ -118,6 +118,12 @@ export default {
           sum++;
         }
       }
+      if (typeof list.items !== "undefined") {
+        if (list.check === false) {
+          return true;
+        }
+      }
+
       if (elements === sum || sum === 0) {
         return true;
       } else {
@@ -136,7 +142,9 @@ export default {
     updateCheck(e, idx, list) {
       if (typeof idx.items !== "undefined") {
         for (let i = 1; i <= Object.keys(idx.items).length; i++) {
-          idx.items[i]["check"] = true;
+          idx.items[i]["num"] > 0
+            ? (idx.items[i]["check"] = true)
+            : (idx.items[i]["check"] = false);
         }
       }
       if (typeof idx.items === "undefined") {
