@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap");
+
+html,
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+}
+#wrapper {
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0px 24px 80px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 11px 20px;
+  box-sizing: border-box;
+}
+#circle {
+  display: none;
+}
+#picture_content_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#picture_header_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.picture_header {
+  width: 50%;
+  text-align: center;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #212121;
+}
+#picture_wrapper {
+  width: 202px;
+  height: 202px;
+  background: #428a60;
+  border-radius: 50%;
+  margin-top: 9px;
+  position: relative;
+}
+#picture {
+  width: 100%;
+  height: 58%;
+  background-image: url("../img/pills.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 25%;
+  left: 0;
+}
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  text-align: center;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 130%;
+  color: #212121;
+}
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #212121;
+}
+.green {
+  color: #428a60;
+}
+label {
+  margin-bottom: 5px;
+}
+input,
+select {
+  background: #f8f8f8;
+  border: 1px solid #e4e4e4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px 7px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 130%;
+  color: #212121;
+}
+input {
+  color: rgba(33, 33, 33, 0.11);
+}
+
+button {
+  margin-top: 28px;
+  margin-bottom: 39px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  background: #428a60;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+}
+#form_phone_wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-top: 10px;
+}
+#form_phone_wrapper > label {
+  width: 100%;
+  margin-bottom: 5px;
+}
+#form_phone {
+  width: 65%;
+}
+#phone_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#mobile_footer {
+  width: 100%;
+  height: 40px;
+  background: #f8f8f8;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 130%;
+  color: #212121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#form_flag {
+  width: 32%;
+}
+
+@media (min-width: 1280px) {
+  #wrapper {
+    flex-direction: row;
+  }
+  #picture_content_wrapper {
+    flex-direction: row;
+    background: linear-gradient(180deg, #428a60 0%, #35734f 100%);
+    box-shadow: 0px 24px 80px rgba(0, 0, 0, 0.1);
+    border-radius: 1px;
+    position: relative;
+  }
+  #picture_header_wrapper {
+    flex-direction: column;
+    height: 100%;
+    width: auto;
+    position: absolute;
+    justify-content: space-between;
+    padding: 40px;
+    box-sizing: border-box;
+    z-index: 3;
+  }
+  .picture_header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 130%;
+    color: #ffffff;
+  }
+  #picture_wrapper {
+    width: 450px;
+    height: 450px;
+    position: absolute;
+    bottom: 10px;
+    left: 3%;
+    z-index: 2;
+  }
+  #circle {
+    width: 668px;
+    height: 668px;
+    display: block;
+    position: absolute;
+    left: 57%;
+    top: -21%;
+    opacity: 0.03;
+    border: 20px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  main {
+    padding: 29px 129px;
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  h1 {
+    background: #f8f8f8;
+    border-radius: 30px;
+    width: 100%;
+    height: 136px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    position: absolute;
+    left: 2%;
+  }
+  form {
+    margin-top: 188px;
+    padding-left: 2%;
+    padding-right: 2%;
+    box-sizing: border-box;
+  }
+  #mobile_footer {
+    display: none;
+  }
+  button {
+    margin-top: 38px;
+    margin-bottom: 31px;
+  }
+}
+
+@media (min-width: 1720px) {
+  #circle {
+    left: 42%;
+  }
+}

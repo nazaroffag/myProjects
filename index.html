@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuckyGroup</title>
+    <link rel="stylesheet" href="./style/normalize.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <section id="picture_content_wrapper">
+        <div id="circle"></div>
+        <div id="picture_header_wrapper">
+          <div class="picture_header">Reduslim</div>
+          <div class="picture_header">ECO</div>
+        </div>
+        <div id="picture_wrapper">
+          <div id="picture"></div>
+        </div>
+      </section>
+      <main>
+        <h1>Сделай шаг к выздоровлению</h1>
+        <form action="POST">
+          <label for="form_name"
+            >Ваше
+            <span class="green">имя </span>
+          </label>
+          <input
+            type="text"
+            id="form_name"
+            class="form_input"
+            placeholder="Алексей"
+          />
+          <div id="form_phone_wrapper">
+            <label for="form_phone"
+              >Ваш
+              <span class="green">телефон </span>
+            </label>
+            <div id="phone_wrapper">
+              <input
+                type="tel"
+                id="form_phone"
+                class="form_input"
+                placeholder="+7 (123) 456 78 90"
+              />
+              <select id="form_flag">
+                RU 🇷🇺
+                <option value="RU">RU &nbsp; 🇷🇺 &nbsp;</option>
+                <option value="EN">EN &nbsp; 🇬🇧 &nbsp;</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit">Заказать &nbsp; &#8594;</button>
+        </form>
+        <div id="mobile_footer">Trusted &nbsp; &#128274; &nbsp; Secure</div>
+      </main>
+    </div>
+  </body>
+</html>
