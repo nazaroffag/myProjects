@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+#calendar-wrapper {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  top: 85px;
+  left: 8px;
+}
+
+#menu-wrapper {
+  width: 176px;
+  height: 370px;
+  background: #ffffff;
+  box-shadow: 0px 10px 40px rgba(128, 158, 191, 0.2);
+  border-radius: 10px;
+  margin-right: 8px;
+  padding: 19px 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.menu-item {
+  background: #ffffff;
+  border: none;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: "PT Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 19px;
+  color: #000000;
+  padding: 8px 0px;
+  padding-left: 14px;
+  text-align: left;
+  margin-bottom: 2px;
+}
+.menu-item:hover {
+  border: 2px solid #ebeef3;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 6px 0px;
+  padding-left: 12px;
+}
+.menu-item:focus,
+.menu-item:active {
+  background: #f0f3f8;
+  border-radius: 5px;
+}
+
+#calendar {
+  width: 288px;
+  height: 370px;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+  user-select: none;
+  background: #ffffff;
+  box-shadow: 0px 10px 40px rgba(128, 158, 191, 0.2);
+  border-radius: 10px;
+}
+#calendar header {
+  display: flex;
+  justify-content: center;
+  padding: 12px 14px 10px 14px;
+  text-align: center;
+  overflow: hidden;
+  color: #efefef;
+}
+#calendar header .current-date {
+  width: 300px;
+}
+.arrow_border {
+  width: 24px;
+  height: 24px;
+  background: #ffffff;
+  box-shadow: 0px 10px 40px rgba(128, 158, 191, 0.2);
+  border-radius: 50%;
+  border: 2px solid black;
+  cursor: pointer;
+  position: relative;
+}
+.arrow-left,
+.arrow-right {
+  width: 5px;
+  height: 5px;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  position: absolute;
+  left: 33%;
+  top: 33%;
+}
+.arrow-left {
+  transform: rotate(-45deg);
+}
+.arrow-right {
+  transform: rotate(135deg);
+}
+
+#calendar header .today {
+  display: grid;
+  grid-template-columns: 40px auto 70px;
+}
+#calendar header .today div {
+  display: flex;
+  justify-content: center;
+  font-family: "PT Sans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  color: #000000;
+}
+#calendar header .today {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#weekdays-wrapper {
+  height: 260px;
+  overflow-y: hidden;
+  display: block;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #f3f8fd;
+}
+#calendar .weekdays {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(34px, 1fr));
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+  background: #f3f8fd;
+}
+#calendar .weekdays div {
+  display: flex;
+  justify-content: center;
+  height: 19px;
+}
+#calendar .date {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(34px, 1fr));
+  background: #f3f8fd;
+}
+#calendar .date div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+}
+#calendar .date .active {
+  background: #ff7439;
+  border-radius: 100%;
+  color: #ffffff;
+}
+#calendar .date .day {
+  cursor: pointer;
+}
+#calendar .date .day:hover {
+  background: #dfe9f3;
+  border-radius: 100%;
+  color: #000000;
+}
+#calendar .date .day-hidden {
+  opacity: 0.4;
+}
+#button-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding-top: 9px;
+  padding-left: 11px;
+  padding-right: 11px;
+  box-sizing: border-box;
+}
+.reject-button,
+.accept-button {
+  border: none;
+  outline: none;
+  padding: 12px 29px;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 7px;
+  background: #ffffff;
+  cursor: pointer;
+}
+.accept-button {
+  border: none;
+  background: rgba(255, 116, 57, 0.5);
+  color: #ffffff;
+  padding: 14px 25px;
+}
+.reject-button:hover,
+.reject-button:focus,
+.reject-button:active {
+  background: #000000;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 7px;
+  color: #ffffff;
+}
+.accept-button:hover,
+.accept-button:focus,
+.accept-button:active {
+  background: #f16e36;
+}
+.button-active {
+  background: #ff7439;
+}
+.chosen {
+  background: rgba(255, 116, 57, 0.2);
+  color: #000000;
+}
