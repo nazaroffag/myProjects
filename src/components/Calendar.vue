@@ -48,11 +48,24 @@
             class="day"
             @click="getDay(n, month.indexOf(month[currentDate.month]))"
             :class="{
-              active: checkDay(n, month.indexOf(month[currentDate.month])),
               chosen: checkPeriod(n, month.indexOf(month[currentDate.month])),
+              limitLeft: checkLimitLeft(
+                n,
+                month.indexOf(month[currentDate.month])
+              ),
+              limitRight: checkLimitRight(
+                n,
+                month.indexOf(month[currentDate.month])
+              ),
             }"
           >
-            {{ n }}
+            <div
+              :class="{
+                active: checkDay(n, month.indexOf(month[currentDate.month])),
+              }"
+            >
+              {{ n }}
+            </div>
           </div>
           <div
             class="day-hidden"
@@ -237,7 +250,6 @@ export default {
         this.getCurrentDate();
         this.currentDate.month = this.currentDate.month - 1;
         this.selectedDays[1] = this.daysInPreviousMonth;
-        console.log(this.daysInPreviousMonth);
         this.selectedDays[0] = 1;
         this.selectedMonths[1] = this.currentDate.month;
         this.selectedMonths[0] = this.currentDate.month;
@@ -245,7 +257,6 @@ export default {
       }
     },
     getDay(day, month) {
-      console.log(this.selectedDays, this.selectedMonths);
       this.buttonActive = true;
       if (this.selectedDays.length <= 1) {
         this.selectedDays[1] = day;
@@ -267,6 +278,24 @@ export default {
         return false;
       }
     },
+    checkLimitLeft(day, month) {
+      if (this.selectedMonths.length === 2 && this.selectedDays.length === 2) {
+        if (this.selectedMonths[0] === month && day === this.selectedDays[0]) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    },
+    checkLimitRight(day, month) {
+      if (this.selectedMonths.length === 2 && this.selectedDays.length === 2) {
+        if (this.selectedMonths[1] === month && day === this.selectedDays[1]) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    },
     checkPeriod(day, month) {
       if (this.selectedMonths.length === 2 && this.selectedDays.length === 2) {
         if (
@@ -283,12 +312,12 @@ export default {
           return true;
         } else if (this.selectedMonths[0] < this.selectedMonths[1]) {
           if (
-            (day > this.selectedDays[0] &&
+            (day >= this.selectedDays[0] &&
               day <= 31 &&
               month === this.selectedMonths[0]) ||
             (month === this.selectedMonths[1] &&
               0 < day &&
-              day < this.selectedDays[1])
+              day <= this.selectedDays[1])
           ) {
             return true;
           } else {
@@ -296,12 +325,12 @@ export default {
           }
         } else if (this.selectedMonths[0] > this.selectedMonths[1]) {
           if (
-            (day < this.selectedDays[0] &&
+            (day <= this.selectedDays[0] &&
               day > 0 &&
               month === this.selectedMonths[0]) ||
             (month === this.selectedMonths[1] &&
               31 >= day &&
-              day > this.selectedDays[1])
+              day >= this.selectedDays[1])
           ) {
             return true;
           } else {
