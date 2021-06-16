@@ -5,7 +5,7 @@
         class="menu-item"
         v-for="(item, idx) in menu"
         :key="idx"
-        @click="menuHandler(idx)"
+        @click="menuHandle(idx)"
       >
         {{ item }}
       </button>
@@ -194,7 +194,7 @@ export default {
         this.currentDate.month -= 1;
       }
     },
-    menuHandler(idx) {
+    menuHandle(idx) {
       this.menuItem = idx;
       if (idx === 0) {
         this.selectedDays = [];
@@ -362,56 +362,38 @@ export default {
           ) {
             filterData.push(this.selectedDays[0]);
             filterData.push(this.selectedDays[1]);
-            filterData.push(
-              this.month[this.selectedMonths[0]].toLowerCase().substr(0, 3)
-            );
-            filterData.push(
-              this.month[this.selectedMonths[1]].toLowerCase().substr(0, 3)
-            );
+            filterData.push(this.month[this.selectedMonths[0]]);
+            filterData.push(this.month[this.selectedMonths[1]]);
           } else if (
             this.selectedDays[1] <= this.selectedDays[0] &&
             this.selectedMonths[1] < this.selectedMonths[0]
           ) {
             filterData.push(this.selectedDays[1]);
             filterData.push(this.selectedDays[0]);
-            filterData.push(
-              this.month[this.selectedMonths[1]].toLowerCase().substr(0, 3)
-            );
-            filterData.push(
-              this.month[this.selectedMonths[0]].toLowerCase().substr(0, 3)
-            );
+            filterData.push(this.month[this.selectedMonths[1]]);
+            filterData.push(this.month[this.selectedMonths[0]]);
           } else if (
             this.selectedDays[1] > this.selectedDays[0] &&
             this.selectedMonths[1] < this.selectedMonths[0]
           ) {
             filterData.push(this.selectedDays[0]);
             filterData.push(this.selectedDays[1]);
-            filterData.push(
-              this.month[this.selectedMonths[1]].toLowerCase().substr(0, 3)
-            );
-            filterData.push(
-              this.month[this.selectedMonths[0]].toLowerCase().substr(0, 3)
-            );
+            filterData.push(this.month[this.selectedMonths[1]]);
+            filterData.push(this.month[this.selectedMonths[0]]);
           } else if (
             this.selectedDays[1] <= this.selectedDays[0] &&
             this.selectedMonths[1] >= this.selectedMonths[0]
           ) {
             filterData.push(this.selectedDays[1]);
             filterData.push(this.selectedDays[0]);
-            filterData.push(
-              this.month[this.selectedMonths[0]].toLowerCase().substr(0, 3)
-            );
-            filterData.push(
-              this.month[this.selectedMonths[1]].toLowerCase().substr(0, 3)
-            );
+            filterData.push(this.month[this.selectedMonths[0]]);
+            filterData.push(this.month[this.selectedMonths[1]]);
           }
           filterData.push(this.currentDate.year);
           this.$emit("activateFilter", filterData);
         } else {
           filterData.push(this.currentDate.date);
-          filterData.push(
-            this.month[this.currentDate.month].toLowerCase().substr(0, 3)
-          );
+          filterData.push(this.month[this.currentDate.month]);
           filterData.push(this.currentDate.year);
           this.$emit("justFilterData", filterData);
         }

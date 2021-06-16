@@ -72,9 +72,6 @@
   overflow: hidden;
   color: #efefef;
 }
-#calendar header .current-date {
-  width: 300px;
-}
 .arrow_border {
   width: 24px;
   height: 24px;
