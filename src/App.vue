@@ -101,13 +101,14 @@ export default {
       this.backdrop = false;
       this.filter = false;
       this.filterData = [];
+      this.saveFilterToLocalStorage();
     },
     showFilter(filter) {
       this.backdrop = false;
       this.calendar = false;
       this.filter = true;
       this.filterData = [...filter];
-      this.$root.$emit("updateFilter", this.filterData);
+      // this.$root.$emit("updateFilter", this.filterData);
       this.saveFilterToLocalStorage();
     },
     justFilter(filter) {
@@ -115,7 +116,7 @@ export default {
       this.calendar = false;
       this.filter = false;
       this.filterData = [...filter];
-      this.$root.$emit("updateFilter", this.filterData);
+      // this.$root.$emit("updateFilter", this.filterData);
       this.saveFilterToLocalStorage();
     },
     cutMonth(month) {
