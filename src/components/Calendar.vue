@@ -199,6 +199,10 @@ export default {
       if (idx === 0) {
         this.selectedDays = [];
         this.getCurrentDate();
+        this.selectedDays[1] = 31;
+        this.selectedDays[0] = 1;
+        this.selectedMonths[1] = 11;
+        this.selectedMonths[0] = 0;
         this.buttonActive = true;
       }
       if (idx === 1) {
@@ -392,8 +396,8 @@ export default {
           filterData.push(this.currentDate.year);
           this.$emit("activateFilter", filterData);
         } else {
-          filterData.push(this.currentDate.date);
-          filterData.push(this.month[this.currentDate.month]);
+          filterData.push(this.selectedDays[0]);
+          filterData.push(this.month[this.selectedMonths[0]]);
           filterData.push(this.currentDate.year);
           this.$emit("justFilterData", filterData);
         }

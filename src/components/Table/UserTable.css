@@ -57,8 +57,11 @@ tbody {
   height: 26px;
   left: -3px;
   position: absolute;
-  top: 0;
+  top: -5px;
   width: 26px;
+}
+.round label:nth-child(0) {
+  top: -8px;
 }
 
 .round label:after {

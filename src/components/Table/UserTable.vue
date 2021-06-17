@@ -1,5 +1,11 @@
 <template>
-  <table cellpadding="20" cellspacing="0" border="0" :filterData="filterData">
+  <table
+    cellpadding="20"
+    cellspacing="0"
+    border="0"
+    :filterData="filterData"
+    @click="filterUsers"
+  >
     <thead>
       <tr>
         <td>
@@ -24,11 +30,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(user, idx) in paginatedUsers" :key="idx">
+      <tr v-for="(user, idx) in filteredUsers.slice(0, rowValue)" :key="idx">
         <td>
           <div class="round">
-            <input type="checkbox" :id="`${user}`" :checked="checkAll" />
-            <label :for="`${user}`"></label>
+            <input type="checkbox" :id="`${idx}`" :checked="checkAll" />
+            <label :for="`${idx}`"></label>
           </div>
         </td>
         <td>
@@ -82,16 +88,16 @@ export default {
         {
           name: "User1",
           email: "user@user.com",
-          regDate: "Февраль 10, 2020",
-          lastActivity: "Февраль 10, 2020",
+          regDate: "Май 10, 2021",
+          lastActivity: "Февраль 10, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
         {
           name: "User2",
           email: "user2@user.com",
-          regDate: "Март 10, 2020",
-          lastActivity: "Февраль 10, 2020",
+          regDate: "Март 10, 2021",
+          lastActivity: "Июнь 10, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
@@ -106,8 +112,8 @@ export default {
         {
           name: "User4",
           email: "user@user.com",
-          regDate: "Февраль 10, 2020",
-          lastActivity: "Июль 10, 2021",
+          regDate: "Февраль 10, 2021",
+          lastActivity: "Июль 11, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
@@ -115,7 +121,7 @@ export default {
           name: "User5",
           email: "user@user.com",
           regDate: "Февраль 10, 2020",
-          lastActivity: "Август 10, 2021",
+          lastActivity: "Июнь 12, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
@@ -123,7 +129,7 @@ export default {
           name: "User6",
           email: "user@user.com",
           regDate: "Февраль 10, 2020",
-          lastActivity: "Февраль 10, 2020",
+          lastActivity: "Июнь 16, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
@@ -131,7 +137,7 @@ export default {
           name: "User7",
           email: "user@user.com",
           regDate: "Февраль 10, 2020",
-          lastActivity: "Февраль 10, 2020",
+          lastActivity: "Июнь 17, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
@@ -139,7 +145,7 @@ export default {
           name: "User8",
           email: "user@user.com",
           regDate: "Февраль 10, 2020",
-          lastActivity: "Февраль 10, 2020",
+          lastActivity: "Июнь 23, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
@@ -147,7 +153,7 @@ export default {
           name: "User9",
           email: "user@user.com",
           regDate: "Февраль 10, 2020",
-          lastActivity: "Февраль 10, 2020",
+          lastActivity: "Июнь 15, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
@@ -155,7 +161,7 @@ export default {
           name: "User10",
           email: "user@user.com",
           regDate: "Февраль 10, 2020",
-          lastActivity: "Февраль 10, 2020",
+          lastActivity: "Июнь 17, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
@@ -163,7 +169,7 @@ export default {
           name: "User11",
           email: "user@user.com",
           regDate: "Февраль 10, 2020",
-          lastActivity: "Февраль 10, 2020",
+          lastActivity: "Май 20, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
@@ -171,7 +177,7 @@ export default {
           name: "User12",
           email: "user@user.com",
           regDate: "Февраль 10, 2020",
-          lastActivity: "Февраль 10, 2020",
+          lastActivity: "Май 10, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
@@ -179,10 +185,25 @@ export default {
           name: "User13",
           email: "user@user.com",
           regDate: "Февраль 10, 2020",
-          lastActivity: "Февраль 10, 2020",
+          lastActivity: "Июнь 24, 2021",
           lastAction: "view_landing_course1",
           product: "Как наладить отнош",
         },
+      ],
+      filteredUsers: [],
+      month: [
+        "Январь",
+        "Февраль",
+        "Март",
+        "Апрель",
+        "Май",
+        "Июнь",
+        "Июль",
+        "Август",
+        "Сентябрь",
+        "Октябрь",
+        "Ноябрь",
+        "Декабрь",
       ],
       rowValue: 15,
       checkAll: false,
@@ -194,29 +215,75 @@ export default {
       this.edit === user ? (this.edit = null) : (this.edit = user);
     },
     deleteUser(idx) {
-      this.users.splice(idx, 1);
-    },
-    showFilter() {
-      let data1 =
-        this.filterData[2] +
-        " " +
-        this.filterData[0] +
-        ", " +
-        this.filterData[4];
-      let data2 =
-        this.filterData[3] +
-        " " +
-        this.filterData[1] +
-        ", " +
-        this.filterData[4];
-      console.log(data1, data2);
+      this.filteredUsers.splice(idx, 1);
     },
   },
+  watch: {
+    filterData(filter) {
+      let data1;
+      let data2;
+      this.filteredUsers = [];
 
-  computed: {
-    paginatedUsers() {
-      return this.users.slice(0, this.rowValue);
+      if (filter.length === 3) {
+        data1 =
+          filter[2] +
+          "-" +
+          (this.month.indexOf(filter[1]) + 1) +
+          "-" +
+          filter[0];
+        for (let i = 0; i < this.users.length; i++) {
+          let d = this.users[i].lastActivity.substring(
+            this.users[i].lastActivity.length - 8,
+            this.users[i].lastActivity.length - 6
+          );
+          let y = this.users[i].lastActivity.substring(
+            this.users[i].lastActivity.length - 4
+          );
+          let m = String(
+            this.month.indexOf(this.users[i].lastActivity.split(" ")[0]) + 1
+          );
+          let data3 = y + "-" + m + "-" + d;
+          if (data3 === data1) {
+            this.filteredUsers.push(this.users[i]);
+          }
+        }
+      } else {
+        data1 =
+          filter[4] +
+          "-" +
+          (this.month.indexOf(filter[2]) + 1) +
+          "-" +
+          filter[0];
+        data2 =
+          filter[4] +
+          "-" +
+          (this.month.indexOf(filter[3]) + 1) +
+          "-" +
+          filter[1];
+      }
+      for (let i = 0; i < this.users.length; i++) {
+        let d = this.users[i].lastActivity.substring(
+          this.users[i].lastActivity.length - 8,
+          this.users[i].lastActivity.length - 6
+        );
+        let y = this.users[i].lastActivity.substring(
+          this.users[i].lastActivity.length - 4
+        );
+        let m =
+          this.month.indexOf(this.users[i].lastActivity.split(" ")[0]) + 1;
+        let data3 = y + "-" + m + "-" + d;
+        if (data1 <= data3 && data3 <= data2) {
+          this.filteredUsers.push(this.users[i]);
+        }
+      }
+
+      if (filter.length === 0) {
+        this.filteredUsers = [...this.users];
+      }
     },
+  },
+  created() {
+    this.filteredUsers = [...this.users];
   },
 };
 </script>
