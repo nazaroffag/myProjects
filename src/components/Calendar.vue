@@ -199,9 +199,9 @@ export default {
       if (idx === 0) {
         this.selectedDays = [];
         this.getCurrentDate();
-        this.selectedDays[1] = 31;
+        this.selectedDays[1] = this.currentDate.date;
         this.selectedDays[0] = 1;
-        this.selectedMonths[1] = 11;
+        this.selectedMonths[1] = this.currentDate.month;
         this.selectedMonths[0] = 0;
         this.buttonActive = true;
       }
