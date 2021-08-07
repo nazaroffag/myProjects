@@ -88,7 +88,6 @@ li > a {
 .top-menu__second-item li {
   cursor: pointer;
 }
-
 .top-menu__second-item > li:first-child {
   padding-right: 14px;
   border-right: 1px solid #252525;
@@ -225,6 +224,7 @@ li > a {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .bottom-menu-side > img {
   height: 19px;
