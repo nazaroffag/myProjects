@@ -465,6 +465,9 @@
         this.tickers
           .filter((t) => t.name === tickerName)
           .forEach((t) => {
+            if (t === this.selectedTicker) {
+              this.graph.push(price);
+            }
             t.price = price;
           });
       },
@@ -477,7 +480,6 @@
       },
 
       select(ticker) {
-        console.log(ticker);
         this.selectedTicker = ticker;
       },
 
