@@ -1,0 +1,37 @@
+
+
+doctype html
+html(lang="ru")
+  head
+    title Системные технологии | Тестовое задание JS
+    style
+      include style/style.css
+  body
+    .wrapper
+      for i in base
+        .document
+          input(type="checkbox" id=(i.dateSum+i.date) class="document-check")
+          label(for=(i.dateSum+i.date) class="document-mark")
+            .document-header
+              p=i.date
+              p Документов: #[span=i.dateProducts.length] (#[span=i.dateSum] &#8381;)
+          .hidden
+            for o in i.dateOperations 
+              .operation 
+                  p Операция № #[span=o.operationNum]
+                  p #[span=o.operationSum] &#8381;
+              input(type="checkbox" id=(o.operationProducts[0].baseIndex+o.operationProducts[0].date) class="products-check")
+              label(for=(o.operationProducts[0].baseIndex+o.operationProducts[0].date) class="product-mark") Товаров: #[span=o.operationProducts.length]
+                div(class="products hidden")
+                  for p in o.operationProducts
+                    .product-wrapper
+                      .image-wrapper
+                        if p.product.image
+                          img(src=p.product.image onerror="src='https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'")
+                        else 
+                          img(src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg")
+                      .product-name-wrapper
+                        .product-name=p.product.name
+                        .product-sum
+                          p #[span=p.product.quantity] шт х #[span=p.product.price] &#8381;
+                          p #[span=(p.product.quantity*p.product.price).toFixed(2)] &#8381;
