@@ -705,7 +705,9 @@ for (let i = 0; i < dateArray.length; i++) {
     dateOperations: dateOperations,
   });
 }
-console.log(documentArray[0].dateOperations[0]);
+// console.log(
+//   documentArray[0].dateOperations[0].operationProducts[0].product.typeId
+// );
 
 app.get("/", (req, res) => {
   res.render("index.pug", {

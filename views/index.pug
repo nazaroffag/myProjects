@@ -1,9 +1,8 @@
-
-
 doctype html
 html(lang="ru")
   head
     title Системные технологии | Тестовое задание JS
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     style
       include style/style.css
   body
@@ -14,12 +13,19 @@ html(lang="ru")
           label(for=(i.dateSum+i.date) class="document-mark")
             .document-header
               p=i.date
-              p Документов: #[span=i.dateProducts.length] (#[span=i.dateSum] &#8381;)
+              p Документов: #[span=i.dateProducts.length] (#[span=i.dateSum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ").replace(/[.]/g, ",")] &#8381;)
           .hidden
             for o in i.dateOperations 
-              .operation 
-                  p Операция № #[span=o.operationNum]
-                  p #[span=o.operationSum] &#8381;
+              .operation
+                if o.operationNum=="564564867361368"
+                  p Расчет № #[span=o.operationNum]
+                else if o.operationNum=="564564867361367"
+                  p Расход № #[span=o.operationNum]
+                else if o.operationNum=="564564867361364"
+                  p Расход № #[span=o.operationNum]
+                else
+                  p Приход № #[span=o.operationNum]
+                p #[span=o.operationSum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ").replace(/[.]/g, ",")] &#8381;
               input(type="checkbox" id=(o.operationProducts[0].baseIndex+o.operationProducts[0].date) class="products-check")
               label(for=(o.operationProducts[0].baseIndex+o.operationProducts[0].date) class="product-mark") Товаров: #[span=o.operationProducts.length]
                 div(class="products hidden")
@@ -33,5 +39,5 @@ html(lang="ru")
                       .product-name-wrapper
                         .product-name=p.product.name
                         .product-sum
-                          p #[span=p.product.quantity] шт х #[span=p.product.price] &#8381;
-                          p #[span=(p.product.quantity*p.product.price).toFixed(2)] &#8381;
+                          p #[span=p.product.quantity] шт х #[span=p.product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ").replace(/[.]/g, ",")] &#8381;
+                          p #[span=(p.product.quantity*p.product.price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ").replace(/[.]/g, ",")] &#8381;
