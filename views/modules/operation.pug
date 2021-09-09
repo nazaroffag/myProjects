@@ -1,0 +1,9 @@
+
+.operation
+    p #[span=o.operationName] № #[span=o.operationNum]
+    p #[span=formatter.format(o.operationSum)]
+input(type="checkbox" id=(o.operationNum) class="products-check")
+label(for=(o.operationNum) class="product-mark") Товаров: #[span=o.operationProducts.length]
+    div(class="products hidden")
+      for p in o.operationProducts
+        include product.pug
