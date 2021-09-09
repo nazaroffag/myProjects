@@ -1,33 +1,28 @@
+- var formatter = new Intl.NumberFormat("ru", {style: "currency", currency: "RUB", minimumFractionDigits: 2});
+
 .document
-  input(type="checkbox" id=(i.dateSum+i.date) class="document-check")
-  label(for=(i.dateSum+i.date) class="document-mark")
+  input(type="checkbox" id=i.date class="document-check")
+  label(for=i.date class="document-mark")
     .document-header
       p=i.date
-      p Документов: #[span=i.dateProducts.length] (#[span=i.dateSum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ").replace(/[.]/g, ",")] &#8381;)
+      p Документов: #[span=i.documentQuantity] (#[span=formatter.format(i.documentSum)])
   .hidden
     for o in i.dateOperations 
       .operation
-        if o.operationNum=="564564867361368"
-          p Расчет № #[span=o.operationNum]
-        else if o.operationNum=="564564867361367"
-          p Расход № #[span=o.operationNum]
-        else if o.operationNum=="564564867361364"
-          p Расход № #[span=o.operationNum]
-        else
-          p Приход № #[span=o.operationNum]
-        p #[span=o.operationSum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ").replace(/[.]/g, ",")] &#8381;
-      input(type="checkbox" id=(o.operationProducts[0].baseIndex+o.operationProducts[0].date) class="products-check")
-      label(for=(o.operationProducts[0].baseIndex+o.operationProducts[0].date) class="product-mark") Товаров: #[span=o.operationProducts.length]
+        p #[span=o.operationName] № #[span=o.operationNum]
+        p #[span=formatter.format(o.operationSum)]
+      input(type="checkbox" id=(o.operationNum) class="products-check")
+      label(for=(o.operationNum) class="product-mark") Товаров: #[span=o.operationProducts.length]
         div(class="products hidden")
           for p in o.operationProducts
             .product-wrapper
               .image-wrapper
-                if p.product.image
-                  img(src=p.product.image onerror="src='https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'")
+                if p.image
+                  img(src=p.image onerror="src='https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'")
                 else 
                   img(src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg")
               .product-name-wrapper
-                .product-name=p.product.name
+                .product-name=p.name
                 .product-sum
-                  p #[span=p.product.quantity] шт х #[span=p.product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ").replace(/[.]/g, ",")] &#8381;
-                  p #[span=(p.product.quantity*p.product.price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ").replace(/[.]/g, ",")] &#8381;
+                  p #[span=p.quantity] шт х #[span=formatter.format(p.price)]
+                  p #[span=formatter.format(p.quantity*p.price)]

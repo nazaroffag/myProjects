@@ -5,7 +5,6 @@ app.set("view engine", "pug");
 
 const productBase = [
   {
-    typeId: "564564867361351",
     quantity: "96",
     id: "564564867361360",
     price: "180",
@@ -17,7 +16,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "89",
     id: "564564867361360",
     price: "150",
@@ -28,7 +26,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "9",
     id: "564564867361360",
     price: "25.1",
@@ -39,7 +36,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "62",
     id: "564564867361361",
     price: "46.3",
@@ -51,7 +47,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "67",
     id: "564564867361361",
     price: "39",
@@ -63,7 +58,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "51",
     id: "564564867361361",
     price: "63",
@@ -74,7 +68,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "4",
     id: "564564867361361",
     price: "102",
@@ -86,7 +79,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "60",
     id: "564564867361361",
     price: "121",
@@ -98,7 +90,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "61",
     id: "564564867361361",
     price: "65",
@@ -109,7 +100,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "41",
     id: "564564867361361",
     price: "36.5",
@@ -121,7 +111,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "3",
     id: "564564867361362",
     price: "102",
@@ -133,7 +122,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "96",
     id: "564564867361362",
     price: "131",
@@ -144,7 +132,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "31",
     id: "564564867361362",
     price: "63",
@@ -155,7 +142,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "52",
     id: "564564867361362",
     price: "150",
@@ -166,7 +152,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "16",
     id: "564564867361362",
     price: "16.9",
@@ -178,7 +163,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "81",
     id: "564564867361362",
     price: "52.41",
@@ -190,7 +174,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "23",
     id: "564564867361362",
     price: "121",
@@ -202,7 +185,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "52",
     id: "564564867361362",
     price: "336",
@@ -214,7 +196,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "12",
     id: "564564867361362",
     price: "73.9",
@@ -225,7 +206,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "6",
     id: "564564867361363",
     price: "46.3",
@@ -237,7 +217,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "18",
     id: "564564867361363",
     price: "30",
@@ -249,7 +228,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "99",
     id: "564564867361363",
     price: "36.5",
@@ -261,7 +239,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "94",
     id: "564564867361363",
     price: "336",
@@ -273,7 +250,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "64",
     id: "564564867361363",
     price: "131",
@@ -284,7 +260,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "52",
     id: "564564867361363",
     price: "25.1",
@@ -295,7 +270,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "43",
     id: "564564867361363",
     price: "150",
@@ -305,7 +279,6 @@ const productBase = [
     name: "Парус апельсин 1л",
   },
   {
-    typeId: "564564867361352",
     quantity: "64",
     id: "564564867361364",
     price: "115",
@@ -317,7 +290,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "3",
     id: "564564867361365",
     price: "46.3",
@@ -329,7 +301,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "88",
     id: "564564867361365",
     price: "65",
@@ -340,7 +311,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "20",
     id: "564564867361365",
     price: "52.41",
@@ -352,7 +322,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "64",
     id: "564564867361365",
     price: "63",
@@ -363,7 +332,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "54",
     id: "564564867361365",
     price: "39",
@@ -375,7 +343,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "88",
     id: "564564867361365",
     price: "150",
@@ -387,7 +354,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "33",
     id: "564564867361365",
     price: "30",
@@ -399,7 +365,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "6",
     id: "564564867361365",
     price: "36.5",
@@ -411,7 +376,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "65",
     id: "564564867361365",
     price: "150",
@@ -423,7 +387,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361352",
     quantity: "45",
     id: "564564867361367",
     price: "121",
@@ -435,7 +398,6 @@ const productBase = [
     operation: "Расход",
   },
   {
-    typeId: "564564867361352",
     quantity: "44",
     id: "564564867361367",
     price: "25.1",
@@ -446,7 +408,6 @@ const productBase = [
     operation: "Расход",
   },
   {
-    typeId: "564564867361352",
     quantity: "62",
     id: "564564867361367",
     price: "115",
@@ -458,7 +419,6 @@ const productBase = [
     operation: "Расход",
   },
   {
-    typeId: "564564867361352",
     quantity: "87",
     id: "564564867361367",
     price: "65",
@@ -469,7 +429,6 @@ const productBase = [
     operation: "Расход",
   },
   {
-    typeId: "564564867361352",
     quantity: "86",
     id: "564564867361367",
     price: "46.3",
@@ -481,7 +440,6 @@ const productBase = [
     operation: "Расход",
   },
   {
-    typeId: "564564867361352",
     quantity: "80",
     id: "564564867361367",
     price: "180",
@@ -493,7 +451,6 @@ const productBase = [
     operation: "Расход",
   },
   {
-    typeId: "564564867361352",
     quantity: "94",
     id: "564564867361367",
     price: "73.9",
@@ -504,7 +461,6 @@ const productBase = [
     operation: "Расход",
   },
   {
-    typeId: "564564867361352",
     quantity: "83",
     id: "564564867361367",
     price: "131",
@@ -515,7 +471,6 @@ const productBase = [
     operation: "Расход",
   },
   {
-    typeId: "564564867361354",
     quantity: "20",
     id: "564564867361368",
     price: "44",
@@ -527,7 +482,6 @@ const productBase = [
     operation: "Расчет",
   },
   {
-    typeId: "564564867361354",
     quantity: "65",
     id: "564564867361368",
     price: "180",
@@ -539,7 +493,6 @@ const productBase = [
     operation: "Расчет",
   },
   {
-    typeId: "564564867361354",
     quantity: "41",
     id: "564564867361368",
     price: "121",
@@ -551,7 +504,6 @@ const productBase = [
     operation: "Расчет",
   },
   {
-    typeId: "564564867361354",
     quantity: "72",
     id: "564564867361368",
     price: "102",
@@ -563,7 +515,6 @@ const productBase = [
     operation: "Расчет",
   },
   {
-    typeId: "564564867361354",
     quantity: "39",
     id: "564564867361368",
     price: "65",
@@ -575,7 +526,6 @@ const productBase = [
     operation: "Расчет",
   },
   {
-    typeId: "564564867361351",
     quantity: "60",
     id: "564564867361369",
     price: "115",
@@ -587,7 +537,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "99",
     id: "564564867361369",
     price: "73.9",
@@ -598,7 +547,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "51",
     id: "564564867361369",
     price: "46.3",
@@ -610,7 +558,6 @@ const productBase = [
     operation: "Приход",
   },
   {
-    typeId: "564564867361351",
     quantity: "15",
     id: "564564867361369",
     price: "33.1",
@@ -623,18 +570,18 @@ const productBase = [
 ];
 
 const month = [
-  "Январь",
-  "Февраль",
-  "Март",
-  "Апрель",
-  "Май",
-  "Июнь",
-  "Июль",
-  "Август",
-  "Сентябрь",
-  "Октябрь",
-  "Ноябрь",
-  "Декабрь",
+  "Января",
+  "Февраля",
+  "Марта",
+  "Апреля",
+  "Мая",
+  "Июня",
+  "Июля",
+  "Августа",
+  "Сентября",
+  "Октября",
+  "Ноября",
+  "Декабря",
 ];
 
 // массив дат
@@ -648,14 +595,17 @@ let documentArray = [];
 
 // перебираю исходный массив, достаю даты, преобразовываю в формат для шаблона ДД-ММММ, пушу в массив дат + делаю массив документов с номером в уникальной базе, копией продуктов оттуда и датой в новом формате. Наполяню массив операций, чтобы затем сформировать уникальный массив операций
 for (let i = 0; i < productBase.length; i++) {
-  let monthNum = productBase[i].date.toString().substr(5, 2);
-  let day = productBase[i].date.toString().substr(8, 2);
+  let tempDate = new Date(productBase[i].date);
+  let monthNum = tempDate.getMonth() + 1;
+  let day = tempDate.getDate();
+  if (day < 10) {
+    day = "0" + day;
+  }
   let date = day + " " + month[monthNum];
   dateArray.push(date);
   tempArray.push({ baseIndex: i, date: date, product: productBase[i] });
   operationArrayNum.push(productBase[i].id);
 }
-
 // осталяем только уникальные значения в массиве
 function unique(arr) {
   let result = [];
@@ -671,37 +621,51 @@ function unique(arr) {
 dateArray = unique(dateArray);
 operationArrayNum = unique(operationArrayNum);
 
-// последовательный перебор массива дат с подбором продуктов на эту дату, а  затем массива операций с подбором продуктов под эту операцию
-// Получился объект с группировкой продуктов и суммой по всем требуемым полям
+// получаем объект с массивом операций, сгруппированных по дню. Получаем так же количество документов и общую сумму по дню
 for (let i = 0; i < dateArray.length; i++) {
-  let products = [];
   let documentSum = 0;
+  let documentQuantity = 0;
+  let documentOperations = [];
   let dateOperations = [];
+
   for (let y = 0; y < tempArray.length; y++) {
     if (dateArray[i] === tempArray[y].date) {
-      products.push(tempArray[y]);
-      documentSum += Number(tempArray[y].product.price);
-      for (let i = 0; i < operationArrayNum.length; i++) {
-        let products = [];
-        let operationSum = 0;
-        for (let y = 0; y < tempArray.length; y++) {
-          if (operationArrayNum[i] === tempArray[y].product.id) {
-            products.push(tempArray[y]);
-            operationSum += Number(tempArray[y].product.price);
-          }
-        }
-        dateOperations.push({
-          operationNum: operationArrayNum[i],
-          operationSum: operationSum.toFixed(2),
-          operationProducts: products,
-        });
-      }
+      documentQuantity += 1;
+      documentSum +=
+        Number(tempArray[y].product.price) *
+        Number(tempArray[y].product.quantity);
+      documentOperations.push(tempArray[y].product);
     }
   }
+  // внутри объекта  массивом операций, сгруппированных по дню, полученного выше, группирую продукты по номеру операций
+  for (let z = 0; z < operationArrayNum.length; z++) {
+    let operationSum = 0;
+    let operationProducts = [];
+    let operationName;
+    for (let q = 0; q < documentOperations.length; q++) {
+      if (documentOperations[q].id === operationArrayNum[z]) {
+        operationSum +=
+          Number(documentOperations[q].quantity) *
+          Number(documentOperations[q].price);
+        operationName = documentOperations[q].operation;
+        operationProducts.push(documentOperations[q]);
+      }
+    }
+    if (operationSum != 0) {
+      dateOperations.push({
+        operationNum: operationArrayNum[z],
+        operationName: operationName,
+        operationSum: operationSum,
+        operationProducts: operationProducts,
+      });
+    }
+  }
+
   documentArray.push({
     date: dateArray[i],
-    dateSum: documentSum.toFixed(2),
-    dateProducts: products,
+    documentQuantity: documentQuantity,
+    documentSum: documentSum,
+    documentOperations: documentOperations,
     dateOperations: dateOperations,
   });
 }
