@@ -1,0 +1,38 @@
+.operation {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+.operation:not(:first-child) {
+  margin-top: 15px;
+}
+.hidden {
+  align-items: center;
+}
+.product-mark {
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 9%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  padding-right: 3%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+.product-mark::before {
+  content: "";
+  border: 4px solid transparent;
+  border-top: 4px solid rgb(220, 220, 220);
+  position: absolute;
+  top: 16px;
+  left: 6%;
+}
+.products-check:checked + label::before {
+  border: 4px solid transparent;
+  border-bottom: 4px solid rgb(220, 220, 220);
+  top: 12px;
+}
