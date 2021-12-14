@@ -1,6 +1,22 @@
-# myProjects
-My test projects to learn computer science
+# oceanstart test
 
+Дизайн и описание в фигме
+https://www.figma.com/file/GgmzarzUgoTXEa5WB7hXo3/Test?node-id=0%3A1
 
-path for db.json
-http://my-json-server.typicode.com/nazaroffag/myProjects/
+## Project setup
+
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+
+```
+npm run build
+```
