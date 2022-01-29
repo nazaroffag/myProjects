@@ -1,0 +1,265 @@
+
+<html> 
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/style.min.css"/>
+    <title>Form elements</title>
+  </head>
+  <body>
+    <div class="wrapper"> 
+      <header class="header undefined"><a href="index.html"> <img src="img/header-logo.svg" alt="header-logo" title="To the main page"/></a></header>
+      <main class="content flex-row jc-space_between"> 
+        <div class="flex-column w-30">
+              <div class="text-field">
+                <label class="text-field__title">text field</label>
+                <input class="text-field__input" type="text" placeholder="Email"/>
+              </div>
+          <div class="mt-20">
+                <div class="dropdown"> 
+                  <label class="dropdown__label">dropdown</label>
+                  <div class="dropdown__select">Сколько гостей
+                    <div class="dropdown__icon">
+                      	<svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg> </div>
+                  </div>
+                  <div class="dropdown__wrapper">
+                    <div class="dropdown__row">
+                      <div class="w-70 dropdown__option" data-option="Взрослые">Взрослые</div>
+                      <div class="w-30 flex-row jc-space_between"> 
+                        <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                        <div class="dropdown__option-value">0</div>
+                        <button class="dropdown__rounded">+</button>
+                      </div>
+                    </div>
+                    <div class="dropdown__row">
+                      <div class="w-70 dropdown__option" data-option="Дети">Дети</div>
+                      <div class="w-30 flex-row jc-space_between"> 
+                        <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                        <div class="dropdown__option-value">0</div>
+                        <button class="dropdown__rounded">+</button>
+                      </div>
+                    </div>
+                    <div class="dropdown__row">
+                      <div class="w-70 dropdown__option" data-option="Младенцы">Младенцы</div>
+                      <div class="w-30 flex-row jc-space_between"> 
+                        <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                        <div class="dropdown__option-value">0</div>
+                        <button class="dropdown__rounded">+</button>
+                      </div>
+                    </div>
+                    <div class="dropdown__buttons">
+                      <button class="dropdown__button">Очистить</button>
+                      <button class="dropdown__button">Применить</button>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <div class="flex-row mt-20">
+            <div class="mr-20"> 
+                  <div class="input-date"> 
+                    <label for="date_1">date dropdown</label>
+                    <input type="date" id="date_1"/>
+                  </div>
+            </div>
+                <div class="input-date"> 
+                  <label for="date_2">date dropdown</label>
+                  <input type="date" id="date_2"/>
+                </div>
+          </div>
+          <div class="mt-20">
+                <div class="subscription"> 
+                  <label class="subscription__label">subscription text field</label>
+                  <input class="subscription__input" type="text" placeholder="Email"/>
+                  <div class="subscription__icon"><svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg></div>
+                </div>
+          </div>
+          <div class="mt-20">
+                <div class="dropdown"> 
+                  <label class="dropdown__label">dropdown</label>
+                  <div class="dropdown__select">Удобства
+                    <div class="dropdown__icon">
+                      	<svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg> </div>
+                  </div>
+                  <div class="dropdown__wrapper">
+                    <div class="dropdown__row">
+                      <div class="w-70 dropdown__option" data-option="Спальни">Спальни</div>
+                      <div class="w-30 flex-row jc-space_between"> 
+                        <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                        <div class="dropdown__option-value">0</div>
+                        <button class="dropdown__rounded">+</button>
+                      </div>
+                    </div>
+                    <div class="dropdown__row">
+                      <div class="w-70 dropdown__option" data-option="Кровати">Кровати</div>
+                      <div class="w-30 flex-row jc-space_between"> 
+                        <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                        <div class="dropdown__option-value">0</div>
+                        <button class="dropdown__rounded">+</button>
+                      </div>
+                    </div>
+                    <div class="dropdown__row">
+                      <div class="w-70 dropdown__option" data-option="Ванные комнаты">Ванные комнаты</div>
+                      <div class="w-30 flex-row jc-space_between"> 
+                        <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                        <div class="dropdown__option-value">0</div>
+                        <button class="dropdown__rounded">+</button>
+                      </div>
+                    </div>
+                    <div class="dropdown__buttons">
+                      <button class="dropdown__button">Очистить</button>
+                      <button class="dropdown__button">Применить</button>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <div class="mt-20"> 
+                <div class="expandable-checkbox-list"> 
+                  <div class="expandable-checkbox-list__title">expandable checkbox list
+                    <div class="expandable-checkbox-list__icon">
+                      	<svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg> </div>
+                  </div>
+                  <div class="expandable-checkbox-list__checks-wrapper"> 
+                        <div class="custom-checkbox">
+                          <input class="custom-checkbox__input" type="checkbox" id="check_breakfast"/>
+                          <label class="custom-checkbox__label" for="check_breakfast">Завтрак</label>
+                        </div>
+                        <div class="custom-checkbox">
+                          <input class="custom-checkbox__input" type="checkbox" id="check_table"/>
+                          <label class="custom-checkbox__label" for="check_table">Письменный стол</label>
+                        </div>
+                        <div class="custom-checkbox">
+                          <input class="custom-checkbox__input" type="checkbox" id="check_chair"/>
+                          <label class="custom-checkbox__label" for="check_chair">Стул для кормления</label>
+                        </div>
+                        <div class="custom-checkbox">
+                          <input class="custom-checkbox__input" type="checkbox" id="check_bed"/>
+                          <label class="custom-checkbox__label" for="check_bed">Кроватка</label>
+                        </div>
+                        <div class="custom-checkbox">
+                          <input class="custom-checkbox__input" type="checkbox" id="check_tv"/>
+                          <label class="custom-checkbox__label" for="check_tv">Телевизор</label>
+                        </div>
+                        <div class="custom-checkbox">
+                          <input class="custom-checkbox__input" type="checkbox" id="check_shampoo"/>
+                          <label class="custom-checkbox__label" for="check_shampoo">Шампунь</label>
+                        </div>
+                  </div>
+                </div>
+          </div>
+          <div class="mt-60">
+                <div class="text-tile">
+                  <div class="text-tile__icon"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg></svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+                  </div>
+                  <div class="text-tile__content"> 
+                    <div class="text-tile__title">Комфорт</div>
+                    <div class="text-tile__text">Шумопоглощающие стены</div>
+                  </div>
+                </div>
+                <div class="text-tile">
+                  <div class="text-tile__icon"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg></svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
+                  </div>
+                  <div class="text-tile__content"> 
+                    <div class="text-tile__title">Удобство</div>
+                    <div class="text-tile__text">Окно в каждой из спален</div>
+                  </div>
+                </div>
+          </div>
+        </div>
+        <div class="flex-column w-30">
+          <section class="section mb-40">
+            <div class="section__title mb-20">Checkbox Buttons</div>
+                <div class="custom-checkbox">
+                  <input class="custom-checkbox__input" type="checkbox" id="smoking"/>
+                  <label class="custom-checkbox__label" for="smoking">Можно курить</label>
+                </div>
+                <div class="custom-checkbox">
+                  <input class="custom-checkbox__input" type="checkbox" id="pets"/>
+                  <label class="custom-checkbox__label" for="pets">Можно с питомцами</label>
+                </div>
+                <div class="custom-checkbox">
+                  <input class="custom-checkbox__input" type="checkbox" id="guests"/>
+                  <label class="custom-checkbox__label" for="guests">Можно пригласить гостей (до 10 человек)</label>
+                </div>
+          </section>
+          <section class="section mb-40">
+            <div class="section__title mb-20">Radio Buttons</div>
+            <div class="flex-row">
+              <div class="mr-20">
+                    <div class="radio-button"> 
+                      <input class="radio-button__input" type="radio" name="sex" id="male" value="male"/>
+                      <label class="radio-button__label" for="male">Мужчина</label>
+                    </div>
+              </div>
+                  <div class="radio-button"> 
+                    <input class="radio-button__input" type="radio" name="sex" id="female" value="female"/>
+                    <label class="radio-button__label" for="female">Женщина</label>
+                  </div>
+            </div>
+          </section>
+          <section class="section mb-40">
+            <div class="section__title mb-20">Toggle</div>
+                <div class="toggle"> 
+                  <input class="toggle__input" type="checkbox" id="offers"/>
+                  <label class="toggle__label" for="offers">Получать спецпредложения</label>
+                </div>
+          </section>
+          <section class="section mb-40">
+            <div class="section__title mb-20">like button</div>
+                <button class="like-button">
+                  <div class="like-button__icon"> </div>
+                  <div class="like-button__text">2</div>
+                </button>
+          </section>
+          <section class="section mb-40">
+            <div class="section__title mb-20">rate button</div>
+            <div class="flex-row">
+              <div class="mr-20">
+                    <div class="rating">
+                      <input type="radio" name="rating" id="rating-5"/>
+                      <label for="rating-5"></label>
+                      <input type="radio" name="rating" id="rating-4"/>
+                      <label for="rating-4"></label>
+                      <input type="radio" name="rating" id="rating-3"/>
+                      <label for="rating-3"></label>
+                      <input type="radio" name="rating" id="rating-2"/>
+                      <label for="rating-2"></label>
+                      <input type="radio" name="rating" id="rating-1"/>
+                      <label for="rating-1"></label>
+                    </div>
+              </div>
+                  <div class="rating">
+                    <input type="radio" name="rating" id="rating-5"/>
+                    <label for="rating-5"></label>
+                    <input type="radio" name="rating" id="rating-4"/>
+                    <label for="rating-4"></label>
+                    <input type="radio" name="rating" id="rating-3"/>
+                    <label for="rating-3"></label>
+                    <input type="radio" name="rating" id="rating-2"/>
+                    <label for="rating-2"></label>
+                    <input type="radio" name="rating" id="rating-1"/>
+                    <label for="rating-1"></label>
+                  </div>
+            </div>
+          </section>
+          <section class="section mb-40">
+            <div class="section__title mb-20">rich Checkbox Buttons </div>
+                <div class="rich-checkbox">
+                  <input class="rich-checkbox__input" type="checkbox" id="corridor"/>
+                  <label class="rich-checkbox__label" for="corridor">Широкий коридор</label>
+                  <div class="rich-checkbox__text">Ширина коридоров в номере не менее 91 см.</div>
+                </div>
+                <div class="rich-checkbox">
+                  <input class="rich-checkbox__input" type="checkbox" id="immobility"/>
+                  <label class="rich-checkbox__label" for="immobility">Помощник для инвалидов</label>
+                  <div class="rich-checkbox__text">На 1 этаже вас встретит специалист  и проводит до номера.</div>
+                </div>
+          </section>
+        </div>
+        <div class="flex-column w-30"></div>
+      </main>
+    </div>
+  </body>
+</html>

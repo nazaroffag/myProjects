@@ -1,0 +1,47 @@
+.subscription {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #1f2041;
+    margin-bottom: 5px;
+  }
+
+  &__input {
+    background: #ffffff;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 12px 15px;
+    padding-right: 45px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: rgba(31, 32, 65, 0.25);
+
+    &:hover,
+    &:focus {
+      border: 1px solid rgba(31, 32, 65, 0.5);
+      color: rgba(31, 32, 65, 0.75);
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 29px;
+    right: 12px;
+    cursor: pointer;
+
+    svg {
+      fill: rgba(188, 156, 255, 1);
+    }
+  }
+}

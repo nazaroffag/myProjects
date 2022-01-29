@@ -1,0 +1,18 @@
+- var blocks = {'#1f2041': {'title': 'Dark Shade 100%', 'color': '#1F2041'}, 'rgba(31, 32, 65, 0.75)' : {'title': 'Dark Shade 75%', 'color': '#1F2041'}, 'rgba(31, 32, 65, 0.5)' : {'title': 'Dark Shade 50%', 'color': '#1F2041'}, 'rgba(31, 32, 65, 0.25)' : {'title': 'Dark Shade 25%', 'color': '#1F2041'}, 'rgba(31, 32, 65, 0.05)' : {'title': 'Dark Shade 5%', 'color': '#1F2041'}, '#BC9CFF': {'title': 'Purple', 'color': '#BC9CFF'}, '#6FCF97': {'title': 'Green', 'color': '#6FCF97'}}
+
+- var headers = {'H1' : {'title': 'This one is the sub-section or widget title', 'class' : 'headers__text-h1', 'teg_class' : 'headers__teg-h1'}, 'H2' : {'title' : 'Next one is the item title inside widgets', 'class' : 'headers__text-h2', 'teg_class' : 'headers__teg-h2'}, 'H3' : {'title' : 'This is a label or CTA text', 'class' : 'headers__text-h3', 'teg_class' : 'headers__teg-h3'}, 'Body' : {'title': 'This is the body text which is used for most of the design, like paragraphs, lists, etc.', 'class' : 'headers__text-body', 'teg_class' : 'headers__teg-body'}}
+
+main.content.flex-row.pl-150
+	.flex-column.w-50
+		each block, color in blocks
+			.flex-row.block-mb
+				.block(style=`background-color: ${color}`)
+				.flex-column.block-ml.block-align_center
+					.block__title=block.title
+					.block__color=block.color 
+	.flex-column.w-50.pr-10
+		each header, teg in headers 
+			.flex-row.headers-mb 
+				.headers__teg-mr-30.headers__teg(class=`${header.teg_class}`)=teg 
+				.headers__text(class=`${header.class}`)=header.title
+		

@@ -1,0 +1,17 @@
+mixin dropdown(dd_label, dd_title, dd_options)
+	.dropdown 
+		label.dropdown__label=dd_label
+		.dropdown__select=dd_title
+			.dropdown__icon 	
+				<svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg> 
+		.dropdown__wrapper
+			for option in dd_options
+				.dropdown__row
+					.w-70.dropdown__option(data-option=`${option}`)=option
+					.w-30.flex-row.jc-space_between 
+						button.dropdown__rounded.dropdown__rounded-disabled -
+						.dropdown__option-value 0
+						button.dropdown__rounded +
+			.dropdown__buttons
+				button.dropdown__button Очистить
+				button.dropdown__button Применить

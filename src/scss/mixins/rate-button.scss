@@ -1,0 +1,33 @@
+.rating {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  overflow: hidden;
+  flex-direction: row-reverse;
+  position: relative;
+
+  & > input {
+    display: none;
+  }
+
+  & > label {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    margin-top: auto;
+    background-image: url("../img/star.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.3s;
+  }
+
+  & > input:checked ~ label,
+  & > input:checked ~ label ~ label {
+    background-image: url("../img/filled-star.svg");
+  }
+
+  & > input:not(:checked) ~ label:hover,
+  & > input:not(:checked) ~ label:hover ~ label {
+    background-image: url("../img/filled-star.svg");
+  }
+}

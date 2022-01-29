@@ -1,0 +1,4 @@
+mixin toggle(toggle_id, toggle_label)
+	.toggle 
+		input(type="checkbox", id=`${toggle_id}`, class="toggle__input")
+		label(class="toggle__label", for=`${toggle_id}`)=toggle_label

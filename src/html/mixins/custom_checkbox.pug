@@ -1,0 +1,4 @@
+mixin custom_checkbox(check_id, check_label)
+	.custom-checkbox
+		input(type="checkbox", id=`${check_id}`, class="custom-checkbox__input")
+		label(class="custom-checkbox__label", for=`${check_id}`)=`${check_label}`

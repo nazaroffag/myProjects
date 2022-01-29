@@ -1,0 +1,12 @@
+@import "custom-reset.scss";
+@import "fonts.scss";
+@import "variables.scss";
+@import "mixins.scss";
+@import "common.scss";
+@import "styles/header.scss";
+@import "styles/colors_and_type.scss";
+@import "styles/cards.scss";
+
+body {
+  font-family: Montserrat, sans-serif;
+}

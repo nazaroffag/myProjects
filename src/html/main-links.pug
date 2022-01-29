@@ -1,0 +1,7 @@
+- var links = {'Colors & type':'colors_and_type.html', 'Cards' : 'cards.html', 'Form elements' : 'form.html', 'Headers and footers' : 'headers.html'}
+
+main.content 
+	ul
+		each link, title in links 
+			li.link
+				a(href=link)=title 

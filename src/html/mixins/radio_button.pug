@@ -1,0 +1,4 @@
+mixin radio_button(radio_name, radio_id, radio_label)
+	.radio-button 
+		input(type="radio", name=`${radio_name}`, id=`${radio_id}`, value=`${radio_id}`, class="radio-button__input")
+		label(for=`${radio_id}`, class="radio-button__label")=radio_label

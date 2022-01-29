@@ -1,0 +1,5 @@
+mixin rich_checkbox(check_id, check_label, check_text)
+	.rich-checkbox
+		input(type="checkbox", id=`${check_id}`, class="rich-checkbox__input")
+		label(class="rich-checkbox__label", for=`${check_id}`)=`${check_label}`
+		.rich-checkbox__text=check_text

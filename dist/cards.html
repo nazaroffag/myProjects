@@ -1,0 +1,41 @@
+
+<html> 
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/style.min.css"/>
+    <title>Cards</title>
+  </head>
+  <body>
+    <div class="wrapper"> 
+      <header class="header header-grey"><a href="index.html"> <img src="img/header-logo.svg" alt="header-logo" title="To the main page"/></a></header>
+      <main class="content content-grey">
+        <div class="room-search flex-column">
+          <div class="room-search__title">Найдём номера под ваши пожелания</div>
+          <div class="flex-row">
+                <div class="input-date"> 
+                  <label for="arrive">прибытие</label>
+                  <input type="date" id="arrive"/>
+                </div>
+                <div class="input-date"> 
+                  <label for="departure">выезд</label>
+                  <input type="date" id="departure"/>
+                </div>
+          </div>
+          <div class="flex-column"> 
+            <label class="room-search__label">гости</label>
+            <select class="room-search__select">
+              <option>сколько гостей</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

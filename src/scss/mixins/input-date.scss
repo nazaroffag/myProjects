@@ -1,0 +1,42 @@
+// input-date
+.input-date {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+
+  & > label {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #1f2041;
+    margin-bottom: 6px;
+  }
+
+  & > input {
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 12px 15px;
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(31, 32, 65, 0.75);
+
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
+    &::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-left: 1px solid rgba(31, 32, 65, 0.25);
+      border-top: 1px solid rgba(31, 32, 65, 0.25);
+      transform: rotate(-135deg);
+    }
+  }
+}
