@@ -1,7 +1,7 @@
 - var rating = [5,4,3,2,1]
 
-mixin rate_button()
+mixin rate_button(rb_name)
 	.rating
 		each star in rating
-			input(type="radio" name="rating" id=`rating-${star}`)
-			label(for=`rating-${star}`)
+			input(type="radio" name=`${rb_name}` id=`${rb_name}-rating-${star}`)
+			label(for=`${rb_name}-rating-${star}`)

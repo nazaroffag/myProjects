@@ -45,5 +45,7 @@
     "webpack": "^5.67.0",
     "webpack-stream": "^7.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "nouislider": "^15.5.1"
+  }
 }
