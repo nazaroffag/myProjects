@@ -11,30 +11,334 @@
   <body>
     <div class="wrapper"> 
       <header class="header header-grey"><a href="index.html"> <img src="img/header-logo.svg" alt="header-logo" title="To the main page"/></a></header>
-      <main class="content content-grey">
-        <div class="room-search flex-column">
-          <div class="room-search__title">Найдём номера под ваши пожелания</div>
-          <div class="flex-row">
-                <div class="input-date"> 
-                  <label for="arrive">прибытие</label>
-                  <input type="date" id="arrive"/>
+      <main class="content content-grey flex-row jc-space_between"> 
+        <div class="flex-column w-30">
+          <div class="mb-40">
+            <form class="card flex-column">
+              <div class="card__title headers__text-h1">Найдём номера под ваши пожелания</div>
+              <div class="flex-row jc-space_between">
+                <div class="mr-20 w-47">
+                      <div class="input-date"> 
+                        <label for="arrive">прибытие</label>
+                        <input class="date-picker" type="text" id="arrive" data-mask="date" placeholder="ДД.ММ.ГГГГ"/>
+                      </div>
                 </div>
-                <div class="input-date"> 
-                  <label for="departure">выезд</label>
-                  <input type="date" id="departure"/>
+                <div class="w-47">
+                      <div class="input-date"> 
+                        <label for="departure">выезд</label>
+                        <input class="date-picker" type="text" id="departure" data-mask="date" placeholder="ДД.ММ.ГГГГ"/>
+                      </div>
+                </div>
+              </div>
+              <div class="mt-20">
+                    <div class="dropdown"> 
+                      <label class="dropdown__label">гости</label>
+                      <div class="dropdown__select">Сколько гостей
+                        <div class="dropdown__icon">
+                          	<svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg> </div>
+                      </div>
+                      <div class="dropdown__wrapper">
+                        <div class="dropdown__row">
+                          <div class="w-70 dropdown__option" data-option="Взрослые">Взрослые</div>
+                          <div class="w-30 flex-row jc-space_between"> 
+                            <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                            <div class="dropdown__option-value">0</div>
+                            <button class="dropdown__rounded">+</button>
+                          </div>
+                        </div>
+                        <div class="dropdown__row">
+                          <div class="w-70 dropdown__option" data-option="Дети">Дети</div>
+                          <div class="w-30 flex-row jc-space_between"> 
+                            <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                            <div class="dropdown__option-value">0</div>
+                            <button class="dropdown__rounded">+</button>
+                          </div>
+                        </div>
+                        <div class="dropdown__row">
+                          <div class="w-70 dropdown__option" data-option="Младенцы">Младенцы</div>
+                          <div class="w-30 flex-row jc-space_between"> 
+                            <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                            <div class="dropdown__option-value">0</div>
+                            <button class="dropdown__rounded">+</button>
+                          </div>
+                        </div>
+                        <div class="dropdown__buttons">
+                          <button class="dropdown__button">Очистить</button>
+                          <button class="dropdown__button">Применить</button>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="mt-31">
+                    <button class="custom-button huge_button" type="submit">подобрать номер
+                      <div class="huge_button__icon"><svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg></div>
+                    </button>
+              </div>
+            </form>
+          </div>
+          <form class="card flex-column"> 
+            <div class="card__title headers__text-h1">Регистрация аккаунта </div>
+            <div class="mb-10">
+                  <div class="text-field">
+                    <label class="text-field__title"></label>
+                    <input class="text-field__input" type="text" placeholder="Имя"/>
+                  </div>
+            </div>
+            <div class="mb-10">
+                  <div class="text-field">
+                    <label class="text-field__title"></label>
+                    <input class="text-field__input" type="text" placeholder="Фамилия"/>
+                  </div>
+            </div>
+            <div class="flex-row mb-20">
+              <div class="mr-20">
+                    <div class="radio-button"> 
+                      <input class="radio-button__input" type="radio" name="sex" id="male" value="male"/>
+                      <label class="radio-button__label" for="male">Мужчина</label>
+                    </div>
+              </div>
+                  <div class="radio-button"> 
+                    <input class="radio-button__input" type="radio" name="sex" id="female" value="female"/>
+                    <label class="radio-button__label" for="female">Женщина</label>
+                  </div>
+            </div>
+            <div class="mb-20">
+                  <div class="masked-text-field">
+                    <label class="masked-text-field__title">дата рождения</label>
+                    <input class="masked-text-field__input" type="text" data-mask="date" placeholder="ДД.ММ.ГГГГ"/>
+                  </div>
+            </div>
+            <div class="mb-10">
+                  <div class="text-field">
+                    <label class="text-field__title">данные для входа в сервис</label>
+                    <input class="text-field__input" type="text" placeholder="Email"/>
+                  </div>
+            </div>
+            <div class="mb-10">
+                  <div class="text-field">
+                    <label class="text-field__title"></label>
+                    <input class="text-field__input" type="text" placeholder="Пароль"/>
+                  </div>
+            </div>
+            <div class="mb-20">
+                  <div class="toggle"> 
+                    <input class="toggle__input" type="checkbox" id="offers"/>
+                    <label class="toggle__label" for="offers">Получать спецпредложения</label>
+                  </div>
+            </div>
+            <div class="mb-30">
+                  <button class="custom-button huge_button" type="submit">перейти к оплате
+                    <div class="huge_button__icon"><svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg></div>
+                  </button>
+            </div>
+            <div class="flex-row jc-space_between align-center">
+              <div class="headers__text-body dark-shade-100">Уже есть аккаунт на Toxin</div>
+                  <button class="custom-button violet">войти</button>
+            </div>
+          </form>
+        </div>
+        <div class="flex-column w-30">
+          <div class="mb-40"> 
+            <form class="card flex-column">
+              <div class="mb-20">
+                    <div class="card-order-title"> 
+                      <div class="card-order-title__wrapper"><span>№</span>
+                        <div class="card-order-title__number">888</div>
+                        <div class="card-order-title__violet-text">люкс</div>
+                      </div>
+                      <div class="card-order-title__wrapper">
+                        <div class="card-order-title__price">9 900</div>
+                        <div class="card-order-title__money">в сутки</div>
+                      </div>
+                    </div>
+              </div>
+              <div class="mb-20 flex-row jc-space_between">
+                <div class="mr-20 w-47">
+                      <div class="input-date"> 
+                        <label for="arrive">прибытие</label>
+                        <input class="date-picker" type="text" id="arrive" data-mask="date" placeholder="ДД.ММ.ГГГГ"/>
+                      </div>
+                </div>
+                <div class="w-47">
+                      <div class="input-date"> 
+                        <label for="departure">выезд</label>
+                        <input class="date-picker" type="text" id="departure" data-mask="date" placeholder="ДД.ММ.ГГГГ"/>
+                      </div>
+                </div>
+              </div>
+              <div class="mb-20">
+                    <div class="dropdown"> 
+                      <label class="dropdown__label">гости</label>
+                      <div class="dropdown__select">Сколько гостей
+                        <div class="dropdown__icon">
+                          	<svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg> </div>
+                      </div>
+                      <div class="dropdown__wrapper">
+                        <div class="dropdown__row">
+                          <div class="w-70 dropdown__option" data-option="Взрослые">Взрослые</div>
+                          <div class="w-30 flex-row jc-space_between"> 
+                            <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                            <div class="dropdown__option-value">0</div>
+                            <button class="dropdown__rounded">+</button>
+                          </div>
+                        </div>
+                        <div class="dropdown__row">
+                          <div class="w-70 dropdown__option" data-option="Дети">Дети</div>
+                          <div class="w-30 flex-row jc-space_between"> 
+                            <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                            <div class="dropdown__option-value">0</div>
+                            <button class="dropdown__rounded">+</button>
+                          </div>
+                        </div>
+                        <div class="dropdown__row">
+                          <div class="w-70 dropdown__option" data-option="Младенцы">Младенцы</div>
+                          <div class="w-30 flex-row jc-space_between"> 
+                            <button class="dropdown__rounded dropdown__rounded-disabled">-</button>
+                            <div class="dropdown__option-value">0</div>
+                            <button class="dropdown__rounded">+</button>
+                          </div>
+                        </div>
+                        <div class="dropdown__buttons">
+                          <button class="dropdown__button">Очистить</button>
+                          <button class="dropdown__button">Применить</button>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="mb-10"> 
+                <div class="flex-row jc-space_between">
+                  <div class="w-70 headers__text-body dark-shade-75">9 990₽ х 4 суток</div>
+                  <div class="flex-grow jc_start"> </div>
+                  <div class="w-20 jc-end headers__text-body dark-shade-75">39 960₽</div>
+                </div>
+              </div>
+              <div class="mb-10"> 
+                <div class="flex-row jc-space_between">
+                  <div class="w-70 headers__text-body dark-shade-75">Сбор за услуги: скидка 2179₽</div>
+                  <div class="flex-grow jc_start">
+                    <div class="card__icon-info"></div>
+                  </div>
+                  <div class="w-20 jc-end headers__text-body dark-shade-75">0₽</div>
+                </div>
+              </div>
+              <div class="mb-30">
+                <div class="flex-row jc-space_between">
+                  <div class="w-70 headers__text-body dark-shade-75">Сбор за дополнительные услуги</div>
+                  <div class="flex-grow jc_start">
+                    <div class="card__icon-info"></div>
+                  </div>
+                  <div class="w-20 jc-end headers__text-body dark-shade-75">300₽</div>
+                </div>
+              </div>
+              <div class="mb-30"> 
+                <div class="flex-row"> 
+                  <div class="headers__text-h1 headers__text-remove_lh">Итого</div>
+                  <div class="flex-grow line"> </div>
+                  <div class="headers__text-h1 headers__text-remove_lh">38 081₽</div>
+                </div>
+              </div>
+                  <button class="custom-button huge_button" type="submit">забронировать
+                    <div class="huge_button__icon"><svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg></div>
+                  </button>
+            </form>
+          </div>
+          <form class="card flex-column"> 
+            <div class="card__title headers__text-h1">Войти</div>
+            <div class="mb-10">
+                  <div class="text-field">
+                    <label class="text-field__title"></label>
+                    <input class="text-field__input" type="text" placeholder="Email"/>
+                  </div>
+            </div>
+            <div class="mb-20">
+                  <div class="text-field">
+                    <label class="text-field__title"></label>
+                    <input class="text-field__input" type="text" placeholder="Пароль"/>
+                  </div>
+            </div>
+            <div class="mb-30">
+                  <button class="custom-button huge_button" type="submit">войти
+                    <div class="huge_button__icon"><svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg></div>
+                  </button>
+            </div>
+            <div class="flex-row jc-space_between align-center">
+              <div class="headers__text-body dark-shade-100">Нет аккаунта на Toxin?</div>
+                  <button class="custom-button bordered">создать</button>
+            </div>
+          </form>
+        </div>
+        <div class="flex-column w-30">
+          <div class="mb-40">
+            <div class="calendar">
+              <div class="calendar__main"> </div>
+            </div>
+          </div>
+          <div class="mb-40">
+                <div class="room-card"> 
+                  <div class="room-card__img"><img src="../img/room1.jpg" alt="room1"/></div>
+                  <div class="room-card__content">
+                    <div class="mb-10">
+                          <div class="card-order-title"> 
+                            <div class="card-order-title__wrapper"><span>№</span>
+                              <div class="card-order-title__number">888</div>
+                              <div class="card-order-title__violet-text">люкс</div>
+                            </div>
+                            <div class="card-order-title__wrapper">
+                              <div class="card-order-title__price">9 990</div>
+                              <div class="card-order-title__money">в сутки</div>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="flex-row jc-space_between"> 
+                          <div class="rating">
+                            <input type="radio" name="first" id="first-rating-5"/>
+                            <label for="first-rating-5"></label>
+                            <input type="radio" name="first" id="first-rating-4"/>
+                            <label for="first-rating-4"></label>
+                            <input type="radio" name="first" id="first-rating-3"/>
+                            <label for="first-rating-3"></label>
+                            <input type="radio" name="first" id="first-rating-2"/>
+                            <label for="first-rating-2"></label>
+                            <input type="radio" name="first" id="first-rating-1"/>
+                            <label for="first-rating-1"></label>
+                          </div>
+                      <div class="room-card__reviews">145<span>Отзывов</span></div>
+                    </div>
+                  </div>
                 </div>
           </div>
-          <div class="flex-column"> 
-            <label class="room-search__label">гости</label>
-            <select class="room-search__select">
-              <option>сколько гостей</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
+              <div class="room-card"> 
+                <div class="room-card__img"><img src="../img/room2.jpg" alt="room2"/></div>
+                <div class="room-card__content">
+                  <div class="mb-10">
+                        <div class="card-order-title"> 
+                          <div class="card-order-title__wrapper"><span>№</span>
+                            <div class="card-order-title__number">840</div>
+                            <div class="card-order-title__violet-text"></div>
+                          </div>
+                          <div class="card-order-title__wrapper">
+                            <div class="card-order-title__price">9 990</div>
+                            <div class="card-order-title__money">в сутки</div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="flex-row jc-space_between"> 
+                        <div class="rating">
+                          <input type="radio" name="second" id="second-rating-5"/>
+                          <label for="second-rating-5"></label>
+                          <input type="radio" name="second" id="second-rating-4"/>
+                          <label for="second-rating-4"></label>
+                          <input type="radio" name="second" id="second-rating-3"/>
+                          <label for="second-rating-3"></label>
+                          <input type="radio" name="second" id="second-rating-2"/>
+                          <label for="second-rating-2"></label>
+                          <input type="radio" name="second" id="second-rating-1"/>
+                          <label for="second-rating-1"></label>
+                        </div>
+                    <div class="room-card__reviews">65<span>Отзывов</span></div>
+                  </div>
+                </div>
+              </div>
         </div>
       </main>
     </div>

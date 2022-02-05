@@ -1,4 +1,5 @@
-mixin input_date(label_title, input_id)
+mixin input_date(label_title, input_id, mt_mask)
 	.input-date 
 		label(for=`${input_id}`)=label_title
-		input(type="date", id=`${input_id}`)
+		input(type="text", id=`${input_id}`, class="date-picker", data-mask="date", placeholder="ДД.ММ.ГГГГ")
+

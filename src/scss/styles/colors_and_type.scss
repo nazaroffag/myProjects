@@ -36,70 +36,13 @@
 
 .headers {
   &__teg {
-    min-width: 65px;
-    font-style: normal;
-    font-weight: normal;
-    text-align: right;
-    color: $dark-shade-25;
-
     &-mr-30 {
       margin-right: 30px;
-    }
-
-    &-h1 {
-      font-size: 24px;
-      line-height: 29px;
-    }
-
-    &-h2 {
-      font-size: 19px;
-      line-height: 23px;
-    }
-
-    &-h3 {
-      font-size: 12px;
-      line-height: 15px;
-    }
-
-    &-body {
-      font-size: 14px;
-      line-height: 24px;
     }
   }
 
   &-mb {
     margin-bottom: 51px;
-  }
-
-  &__text {
-    color: $dark-shade-100;
-    font-style: normal;
-
-    &-h1 {
-      font-weight: bold;
-      font-size: 24px;
-      line-height: 29px;
-    }
-
-    &-h2 {
-      font-weight: bold;
-      font-size: 19px;
-      line-height: 23px;
-    }
-
-    &-h3 {
-      font-weight: bold;
-      font-size: 12px;
-      line-height: 15px;
-      text-transform: uppercase;
-    }
-
-    &-body {
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 24px;
-      color: $dark-shade-75;
-    }
   }
 }
 

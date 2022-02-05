@@ -3,5 +3,11 @@
 html 
 	include html/head.pug
 	body
+		include html/mixins/header-mixin.pug
+		include html/mixins/custom_button.pug
+		include html/mixins/subscription.pug
+
+
 		.wrapper 
 			include html/header.pug
+			include html/main_headers.pug

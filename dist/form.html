@@ -57,22 +57,30 @@
                 </div>
           </div>
           <div class="flex-row mt-20">
-            <div class="mr-20"> 
+            <div class="mr-20 w-47"> 
                   <div class="input-date"> 
                     <label for="date_1">date dropdown</label>
-                    <input type="date" id="date_1"/>
+                    <input class="date-picker" type="text" id="date_1" data-mask="date" placeholder="ДД.ММ.ГГГГ"/>
                   </div>
             </div>
-                <div class="input-date"> 
-                  <label for="date_2">date dropdown</label>
-                  <input type="date" id="date_2"/>
-                </div>
+            <div class="w-47">
+                  <div class="input-date"> 
+                    <label for="date_2">date dropdown</label>
+                    <input class="date-picker" type="text" id="date_2" data-mask="date" placeholder="ДД.ММ.ГГГГ"/>
+                  </div>
+            </div>
           </div>
           <div class="mt-20">
                 <div class="subscription"> 
                   <label class="subscription__label">subscription text field</label>
                   <input class="subscription__input" type="text" placeholder="Email"/>
                   <div class="subscription__icon"><svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg></div>
+                </div>
+          </div>
+          <div class="mt-20">
+                <div class="masked-text-field">
+                  <label class="masked-text-field__title">masked text field</label>
+                  <input class="masked-text-field__input" type="text" data-mask="date" placeholder="ДД.ММ.ГГГГ"/>
                 </div>
           </div>
           <div class="mt-20">
@@ -271,19 +279,16 @@
             <div class="section__title mb-20">buttons</div>
             <div class="flex-row mb-30">
               <div class="mr-20">
-                    <button class="custom-button violet">click me
-                    </button>
+                    <button class="custom-button violet">click me</button>
               </div>
               <div class="mr-20"> 
-                    <button class="custom-button bordered">click me
-                    </button>
+                    <button class="custom-button bordered">click me</button>
               </div>
               <div class="mr-20"> 
-                    <button class="custom-button texted">click me
-                    </button>
+                    <button class="custom-button texted">click me</button>
               </div>
             </div>
-                <button class="custom-button huge_button">перейти к оплате
+                <button class="custom-button huge_button" type="submit">перейти к оплате
                   <div class="huge_button__icon"><svg height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"/></svg></div>
                 </button>
           </section>

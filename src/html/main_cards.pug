@@ -1,2 +1,16 @@
-main.content.content-grey
-	include components/room_search/room_search.pug
+main.content.content-grey.flex-row.jc-space_between 
+	.flex-column.w-30
+		.mb-40
+			include components/room_search.pug
+		include components/account_registration.pug 
+	.flex-column.w-30
+		.mb-40 
+			include components/booking.pug
+		include components/login.pug
+	.flex-column.w-30
+		.mb-40
+			include components/calendar.pug
+		.mb-40
+			+room_card('room1', '888', 'люкс', '9 990', 'first', '145')
+		+room_card('room2', '840', '', '9 990', 'second', '65')
+		

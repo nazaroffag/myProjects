@@ -4,11 +4,14 @@ main.content.flex-row.jc-space_between
 		.mt-20
 			+dropdown('dropdown', 'Сколько гостей', ['Взрослые', 'Дети', 'Младенцы'])
 		.flex-row.mt-20
-			.mr-20 
+			.mr-20.w-47 
 				+input_date('date dropdown', 'date_1')
-			+input_date('date dropdown', 'date_2')
+			.w-47
+				+input_date('date dropdown', 'date_2')
 		.mt-20
 			+subscription('subscription text field', 'Email')
+		.mt-20
+			+masked_text_field('masked text field', 'date', 'ДД.ММ.ГГГГ')
 		.mt-20
 			+dropdown('dropdown', 'Удобства', ['Спальни', 'Кровати', 'Ванные комнаты'])
 		.mt-20 

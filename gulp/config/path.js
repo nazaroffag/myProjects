@@ -29,7 +29,7 @@ export const path = {
     // html: `${srcFolder}/**/*.html`, // если собираем из html
     html: `${srcFolder}/**/*.pug`,
     files: `${srcFolder}/files/**/*.*`,
-    scss: `${srcFolder}/scss/**/*.scss`,
+    scss: `${srcFolder}/**/*.scss`,
     js: `${srcFolder}/js/**/*.js`,
     images: `${srcFolder}/img/**/*.{jpg, jpeg, png, gif, webp, ico, svg}`,
   },
